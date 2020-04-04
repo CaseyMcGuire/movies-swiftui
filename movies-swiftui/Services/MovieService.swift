@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Promises
 
 class MovieService {
   
@@ -14,29 +15,29 @@ class MovieService {
   
   let apiService = ApiService()
   
-  func fetchMovie(id: Int, completion: @escaping (MovieResult?, Error?) -> ()) {
+  func fetchMovie(id: Int) -> Promise<MovieResult> {
     let url = MovieService.endpoint + String(id)
-    apiService.fetch(endpoint: url, type: MovieResult.self, completion: completion)
+    return apiService.fetch(endpoint: url, type: MovieResult.self)
   }
   
-  func fetchPopular(completion: @escaping (MovieResultList?, Error?) -> ()) {
+  func fetchPopular() -> Promise<MovieResultList> {
     let url = MovieService.endpoint + MovieCollectionType.POPULAR.rawValue
-    apiService.fetch(endpoint: url, type: MovieResultList.self, completion: completion)
+    return apiService.fetch(endpoint: url, type: MovieResultList.self)
   }
   
-  func fetchTrending(completion: @escaping (MovieResultList?, Error?) -> ()) {
+  func fetchTrending() -> Promise<MovieResultList> {
     let url = MovieCollectionType.TRENDING.rawValue
-    apiService.fetch(endpoint: url, type: MovieResultList.self, completion: completion)
+    return apiService.fetch(endpoint: url, type: MovieResultList.self)
   }
   
-  func fetchUpcoming(completion: @escaping (MovieResultList?, Error?) -> ()) {
+  func fetchUpcoming() -> Promise<MovieResultList> {
     let url = MovieService.endpoint + MovieCollectionType.UPCOMING.rawValue
-    apiService.fetch(endpoint: url, type: MovieResultList.self, completion: completion)
+    return apiService.fetch(endpoint: url, type: MovieResultList.self)
   }
   
-  func fetchNowPlaying(completion: @escaping (MovieResultList?, Error?) -> ()) {
+  func fetchNowPlaying() -> Promise<MovieResultList> {
     let url = MovieService.endpoint + MovieCollectionType.NOW_PLAYING.rawValue
-    apiService.fetch(endpoint: url, type: MovieResultList.self, completion: completion)
+    return apiService.fetch(endpoint: url, type: MovieResultList.self)
   }
 }
 

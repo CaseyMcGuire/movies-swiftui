@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Promises
 
 class ApiService {
   
   private static let baseUrl = "https://api.themoviedb.org/3/"
   
-  func fetch<T: Decodable>(endpoint: String, type: T.Type, completion: @escaping (T?, Error?) -> ()) {
+  private func fetch<T: Decodable>(endpoint: String, type: T.Type, completion: @escaping (T?, Error?) -> ()) {
     let fullUrl = ApiService.baseUrl + endpoint + "?api_key=" + Secrets.apiKey
     guard let url = URL(string: fullUrl) else { return }
     
@@ -34,6 +35,19 @@ class ApiService {
       }
       }.resume()
     
+  }
+  
+  func fetch<T: Decodable>(endpoint: String, type: T.Type) -> Promise<T> {
+    return Promise { (resolve, reject) in
+      self.fetch(endpoint: endpoint, type: type) { (data, err) in
+        if err != nil {
+          reject(err!)
+        }
+        else {
+          resolve(data!)
+        }
+      }
+    }
   }
   
 }
