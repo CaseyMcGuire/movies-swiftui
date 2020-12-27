@@ -19,4 +19,18 @@ struct MovieResult: Decodable {
   let posterPath: String?
   let overview: String
   let title: String
+  let adult: Bool
+  let budget: Int?
+  let genres: [Genre]?
+  let homePage: String?
+  let imdbId: String?
+  let originalLanguage: String?
+  let originalTitle: String?
+  let popularity: Double?
+  let status: String?
+  let tagline: String?
+  let video: Bool?
+  let voteAverage: Double?
+  let voteCount: Int?
+  let releaseDate: String?
 }

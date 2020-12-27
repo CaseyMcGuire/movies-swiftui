@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		19D8EA47D2DA8913AEA1903A /* Pods_movies_swiftui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E11E86D5F55FEB6CCDEAF16 /* Pods_movies_swiftui.framework */; };
+		3221ABA124393F8800E6B119 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA024393F8800E6B119 /* Env.swift */; };
+		3221ABA524398AA700E6B119 /* MovieScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA424398AA700E6B119 /* MovieScreen.swift */; };
+		3221ABA7243998FC00E6B119 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA6243998FC00E6B119 /* Genre.swift */; };
+		3221ABAA243A6A9900E6B119 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA9243A6A9900E6B119 /* HomeScreenViewModel.swift */; };
 		324E11E624393B9A001CAD62 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 324E11E524393B9A001CAD62 /* .gitignore */; };
 		3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FB2438437000D16DA6 /* AppDelegate.swift */; };
 		3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FD2438437000D16DA6 /* SceneDelegate.swift */; };
 		3290E6002438437000D16DA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FF2438437000D16DA6 /* ContentView.swift */; };
 		3290E6022438437200D16DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6012438437200D16DA6 /* Assets.xcassets */; };
 		3290E6052438437200D16DA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6042438437200D16DA6 /* Preview Assets.xcassets */; };
-		3290E6082438437200D16DA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6062438437200D16DA6 /* LaunchScreen.storyboard */; };
 		3290E6132438437200D16DA6 /* movies_swiftuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E6122438437200D16DA6 /* movies_swiftuiTests.swift */; };
 		3290E61E2438437200D16DA6 /* movies_swiftuiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E61D2438437200D16DA6 /* movies_swiftuiUITests.swift */; };
 		3290E62D243843B600D16DA6 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E62C243843B600D16DA6 /* ApiService.swift */; };
@@ -22,7 +25,6 @@
 		3290E634243844CA00D16DA6 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E633243844CA00D16DA6 /* MovieService.swift */; };
 		3290E637243844FC00D16DA6 /* MovieResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E636243844FC00D16DA6 /* MovieResult.swift */; };
 		3290E63A2438490700D16DA6 /* TMDBImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E6392438490700D16DA6 /* TMDBImageUtil.swift */; };
-		3290E63E2438559200D16DA6 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E63D2438559200D16DA6 /* Env.swift */; };
 		63FED798E518D7D25B10F14C /* Pods_movies_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA2E2829A47951E99FA488F /* Pods_movies_swiftuiTests.framework */; };
 		9D48989381BB418C05EA803D /* Pods_movies_swiftui_movies_swiftuiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509E8FA8092732B234EADB7 /* Pods_movies_swiftui_movies_swiftuiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		23344905B0770EDFE9601BC5 /* Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3221ABA024393F8800E6B119 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		3221ABA424398AA700E6B119 /* MovieScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScreen.swift; sourceTree = "<group>"; };
+		3221ABA6243998FC00E6B119 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		3221ABA9243A6A9900E6B119 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		324E11E524393B9A001CAD62 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3290E5F82438437000D16DA6 /* movies-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movies-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3290E5FB2438437000D16DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +59,6 @@
 		3290E5FF2438437000D16DA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3290E6012438437200D16DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3290E6042438437200D16DA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3290E6072438437200D16DA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3290E6092438437200D16DA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3290E60E2438437200D16DA6 /* movies-swiftuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "movies-swiftuiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3290E6122438437200D16DA6 /* movies_swiftuiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_swiftuiTests.swift; sourceTree = "<group>"; };
@@ -66,7 +71,6 @@
 		3290E633243844CA00D16DA6 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		3290E636243844FC00D16DA6 /* MovieResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResult.swift; sourceTree = "<group>"; };
 		3290E6392438490700D16DA6 /* TMDBImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImageUtil.swift; sourceTree = "<group>"; };
-		3290E63D2438559200D16DA6 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		5C4AAC864853A128C77C75AD /* Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		64B659F5E2EBECE303450271 /* Pods-movies-swiftui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui/Pods-movies-swiftui.release.xcconfig"; sourceTree = "<group>"; };
 		7E11E86D5F55FEB6CCDEAF16 /* Pods_movies_swiftui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies_swiftui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3221ABA224398A8E00E6B119 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				3221ABA324398A9600E6B119 /* MovieScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		3221ABA324398A9600E6B119 /* MovieScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3221ABA424398AA700E6B119 /* MovieScreen.swift */,
+			);
+			path = MovieScreen;
+			sourceTree = "<group>";
+		};
+		3221ABA8243A6A8900E6B119 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3221ABA9243A6A9900E6B119 /* HomeScreenViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3290E5EF2438437000D16DA6 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +172,8 @@
 		3290E5FA2438437000D16DA6 /* movies-swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				3221ABA8243A6A8900E6B119 /* ViewModels */,
+				3221ABA224398A8E00E6B119 /* Screens */,
 				3290E638243848F400D16DA6 /* Util */,
 				3290E635243844EA00D16DA6 /* Models */,
 				3290E62E243843E500D16DA6 /* Config */,
@@ -152,10 +182,9 @@
 				3290E5FD2438437000D16DA6 /* SceneDelegate.swift */,
 				3290E5FF2438437000D16DA6 /* ContentView.swift */,
 				3290E6012438437200D16DA6 /* Assets.xcassets */,
-				3290E6062438437200D16DA6 /* LaunchScreen.storyboard */,
 				3290E6092438437200D16DA6 /* Info.plist */,
 				3290E6032438437200D16DA6 /* Preview Content */,
-				3290E63D2438559200D16DA6 /* Env.swift */,
+				3221ABA024393F8800E6B119 /* Env.swift */,
 			);
 			path = "movies-swiftui";
 			sourceTree = "<group>";
@@ -206,6 +235,7 @@
 		3290E635243844EA00D16DA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3221ABA6243998FC00E6B119 /* Genre.swift */,
 				3290E636243844FC00D16DA6 /* MovieResult.swift */,
 			);
 			path = Models;
@@ -297,7 +327,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Casey McGuire";
 				TargetAttributes = {
 					3290E5F72438437000D16DA6 = {
@@ -339,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				324E11E624393B9A001CAD62 /* .gitignore in Resources */,
-				3290E6082438437200D16DA6 /* LaunchScreen.storyboard in Resources */,
 				3290E6052438437200D16DA6 /* Preview Assets.xcassets in Resources */,
 				3290E6022438437200D16DA6 /* Assets.xcassets in Resources */,
 			);
@@ -469,10 +498,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3221ABA524398AA700E6B119 /* MovieScreen.swift in Sources */,
+				3221ABAA243A6A9900E6B119 /* HomeScreenViewModel.swift in Sources */,
 				3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */,
 				3290E630243843FC00D16DA6 /* Secrets.swift in Sources */,
+				3221ABA7243998FC00E6B119 /* Genre.swift in Sources */,
 				3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */,
-				3290E63E2438559200D16DA6 /* Env.swift in Sources */,
+				3221ABA124393F8800E6B119 /* Env.swift in Sources */,
 				3290E637243844FC00D16DA6 /* MovieResult.swift in Sources */,
 				3290E62D243843B600D16DA6 /* ApiService.swift in Sources */,
 				3290E63A2438490700D16DA6 /* TMDBImageUtil.swift in Sources */,
@@ -512,17 +544,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		3290E6062438437200D16DA6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3290E6072438437200D16DA6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3290E6202438437200D16DA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -550,6 +571,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -610,6 +632,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
