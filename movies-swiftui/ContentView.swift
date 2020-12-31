@@ -25,10 +25,12 @@ struct ContentView: View {
           MoviePosterScroll(movies: trendingMovies)
           Spacer()
         }
-    }
+
       }
-       .onAppear(perform: load)
     }
+    .onAppear(perform: load)
+      
+  }
   
   
   func load() {
@@ -38,7 +40,7 @@ struct ContentView: View {
       movieService.fetchUpcoming(),
       movieService.fetchNowPlaying()
     ).then { popular, trending, upcoming, nowPlaying in
-//      print(popular)
+      //      print(popular)
       self.popularMovies = popular.results
       self.trendingMovies = trending.results
     }
@@ -52,19 +54,19 @@ struct MoviePosterScroll : View {
     
     VStack(alignment: .leading) {
       Text("Popular").font(.title)
-        ScrollView(.horizontal, showsIndicators: false) {
-          HStack {
-            ForEach(movies, id: \.id) { item in
-              NavigationLink(destination: MovieScreen(movie: item)) {
-                Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W92)!)
-              }
-              .buttonStyle(PlainButtonStyle())
+      ScrollView(.horizontal, showsIndicators: false) {
+        HStack {
+          ForEach(movies, id: \.id) { item in
+            NavigationLink(destination: MovieScreen(movie: item)) {
+              Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W92)!)
             }
+            .buttonStyle(PlainButtonStyle())
           }
         }
       }
     }
   }
+}
 
 
 
