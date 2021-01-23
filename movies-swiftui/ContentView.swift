@@ -40,7 +40,6 @@ struct ContentView: View {
       movieService.fetchUpcoming(),
       movieService.fetchNowPlaying()
     ).then { popular, trending, upcoming, nowPlaying in
-      //      print(popular)
       self.popularMovies = popular.results
       self.trendingMovies = trending.results
     }
@@ -57,7 +56,7 @@ struct MoviePosterScroll : View {
       ScrollView(.horizontal, showsIndicators: false) {
         HStack {
           ForEach(movies, id: \.id) { item in
-            NavigationLink(destination: MovieScreen(movie: item)) {
+            NavigationLink(destination: MovieScreen(movieId: item.id)) {
               Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W92)!)
             }
             .buttonStyle(PlainButtonStyle())
