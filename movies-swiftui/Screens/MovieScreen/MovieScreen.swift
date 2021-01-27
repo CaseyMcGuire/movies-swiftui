@@ -18,7 +18,8 @@ struct MovieScreen : View {
   
   var body: some View {
     if self.movie == nil {
-      ProgressView().onAppear(perform: load)
+      ProgressView()
+        .onAppear(perform: load)
         .navigationBarTitleDisplayMode(.inline)
     } else {
       MovieScreenLoaded(movie: self.movie!)
@@ -41,27 +42,38 @@ struct MovieScreenLoaded : View {
   var body: some View {
     
     VStack(alignment: .leading, spacing: 4) {
-        Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W500)!)
-          .resizable()
-          .scaledToFit()
-          .overlay(TintOverlay())
-      HStack {
-        Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.posterPath!, imageSize: .W154)!)
+      Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W500)!)
+        .resizable()
+        .scaledToFit()
+        .overlay(TintOverlay())
+      VStack(alignment: .leading) {
+        HStack {
+          Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.posterPath!, imageSize: .W300)!)
+            .resizable()
+            .frame(width: 100, height: 150)
+            .scaledToFill()
+          VStack {
 
-        Text(String(self.movie.title))
-      }.offset(y: -130)
-       .padding(.bottom, -130)
-      HStack {
-        VStack {
+            Text(String(self.movie.title))
+              .font(.headline)
+            Text(String(self.movie.tagline!))
+              .font(.subheadline)
+          }
 
-          Text(String(self.movie.releaseDate!))
-          Text(String(self.movie.overview))
+        }.offset(y: -140)
+        .padding(.bottom, -140)
+        HStack {
+          VStack {
+            
+            Text(String(self.movie.releaseDate!))
+            Text(String(self.movie.overview))
+          }
+          Spacer()
         }
         Spacer()
-      }
-      Spacer()
+      }.padding(10)
     }
-}
+  }
 }
 
 // https://www.codebales.com/swiftui-background-image-with-gradient-tint

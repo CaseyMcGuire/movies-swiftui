@@ -18,18 +18,24 @@ struct ContentView: View {
   @State private var trendingMovies = [MovieResult]()
   
   var body: some View {
+    if popularMovies.isEmpty {
+      ProgressView().onAppear(perform: load)
+    }
+    else {
     NavigationView {
       ScrollView {
         VStack(alignment: .leading) {
-          MoviePosterScroll(movies: popularMovies)
-          MoviePosterScroll(movies: trendingMovies)
+          MoviePosterScroll(movies: popularMovies, title: "Popular")
+          MoviePosterScroll(movies: trendingMovies, title: "Trending")
           Spacer()
         }
 
       }
+      .navigationTitle("Movies")
     }
-    .onAppear(perform: load)
-      
+
+
+    }
   }
   
   
@@ -43,27 +49,32 @@ struct ContentView: View {
       self.popularMovies = popular.results
       self.trendingMovies = trending.results
     }
+
   }
 }
 
 struct MoviePosterScroll : View {
   var movies: [MovieResult]
+  var title: String
   
   var body: some View {
     
     VStack(alignment: .leading) {
-      Text("Popular").font(.title)
+      Text(self.title).font(.title3)
       ScrollView(.horizontal, showsIndicators: false) {
         HStack {
           ForEach(movies, id: \.id) { item in
             NavigationLink(destination: MovieScreen(movieId: item.id)) {
-              Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W92)!)
+              Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W300)!)
+                .resizable()
+                .frame(width: 100, height: 150)
+                .scaledToFill()
             }
             .buttonStyle(PlainButtonStyle())
           }
         }
       }
-    }
+    }.padding(4)
   }
 }
 
