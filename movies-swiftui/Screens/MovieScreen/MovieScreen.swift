@@ -11,29 +11,26 @@ import SwiftUI
 
 struct MovieScreen : View {
   
+  @ObservedObject var movieViewModel = MovieScreenViewModel()
+  
   private let movieService = MovieService()
-
   var movieId: Int
-  @State private var movie: MovieResult?
   
   var body: some View {
-    if self.movie == nil {
+    switch movieViewModel.loadingState {
+    case .loading:
       ProgressView()
-        .onAppear(perform: load)
+        .onAppear {
+          movieViewModel.load(movieId: self.movieId)
+        }
         .navigationBarTitleDisplayMode(.inline)
-    } else {
-      MovieScreenLoaded(movie: self.movie!)
+    case .loaded(let movieResult):
+      MovieScreenLoaded(movie: movieResult)
         .navigationBarTitleDisplayMode(.inline)
-
+    case .error:
+      Text("error")
     }
   }
-  
-  func load() {
-    movieService.fetchMovie(id: self.movieId).then { result in
-      self.movie = result
-    }
-  }
-  
 }
 
 struct MovieScreenLoaded : View {
@@ -42,16 +39,13 @@ struct MovieScreenLoaded : View {
   var body: some View {
     
     VStack(alignment: .leading, spacing: 4) {
-      Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W500)!)
+      Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W780)!)
         .resizable()
         .scaledToFit()
         .overlay(TintOverlay())
       VStack(alignment: .leading) {
         HStack {
-          Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.posterPath!, imageSize: .W300)!)
-            .resizable()
-            .frame(width: 100, height: 150)
-            .scaledToFill()
+          MoviePoster(backdropPath: movie.posterPath)
           VStack {
 
             Text(String(self.movie.title))
@@ -64,9 +58,9 @@ struct MovieScreenLoaded : View {
         .padding(.bottom, -140)
         HStack {
           VStack {
-            
             Text(String(self.movie.releaseDate!))
             Text(String(self.movie.overview))
+              .font(.subheadline)
           }
           Spacer()
         }
