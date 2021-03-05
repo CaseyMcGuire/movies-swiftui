@@ -46,19 +46,18 @@ struct MovieScreenLoaded : View {
       VStack(alignment: .leading) {
         HStack {
           MoviePoster(backdropPath: movie.posterPath)
+          Spacer()
           VStack {
-
             Text(String(self.movie.title))
               .font(.headline)
             Text(String(self.movie.tagline!))
               .font(.subheadline)
           }
-
+          Spacer()
         }.offset(y: -140)
         .padding(.bottom, -140)
         HStack {
           VStack {
-            Text(String(self.movie.releaseDate!))
             Text(String(self.movie.overview))
               .font(.subheadline)
           }

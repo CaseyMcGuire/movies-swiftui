@@ -18,6 +18,9 @@ class MovieScreenViewModel: ObservableObject {
     movieService.fetchMovie(id: movieId).then { result in
       self.loadingState = .loaded(result)
     }
+    .catch { err in
+      self.loadingState = .error
+    }
   }
 }
 
