@@ -13,8 +13,13 @@ class ApiService {
   
   private static let baseUrl = "https://api.themoviedb.org/3/"
   
-  private func fetch<T: Decodable>(endpoint: String, type: T.Type, completion: @escaping (T?, Error?) -> ()) {
-    let fullUrl = ApiService.baseUrl + endpoint + "?api_key=" + Secrets.apiKey
+  private func fetch<T: Decodable>(endpoint: String, queryStrings: [String], type: T.Type, completion: @escaping (T?, Error?) -> ()) {
+    let baseUrl = ApiService.baseUrl + endpoint + "?api_key=" + Secrets.apiKey
+    let queryString = queryStrings.reduce("") { acc, next in
+      return acc + "&" + next
+    }
+    let fullUrl = baseUrl + queryString
+
     guard let url = URL(string: fullUrl) else { return }
     
     URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -37,9 +42,9 @@ class ApiService {
     
   }
   
-  func fetch<T: Decodable>(endpoint: String, type: T.Type) -> Promise<T> {
+  func fetch<T: Decodable>(endpoint: String, queryStrings: [String], type: T.Type) -> Promise<T> {
     return Promise { (resolve, reject) in
-      self.fetch(endpoint: endpoint, type: type) { (data, err) in
+      self.fetch(endpoint: endpoint, queryStrings: queryStrings, type: type) { (data, err) in
         if err != nil {
           reject(err!)
         }
@@ -48,6 +53,10 @@ class ApiService {
         }
       }
     }
+  }
+  
+  func fetch<T: Decodable>(endpoint: String, type: T.Type) -> Promise<T> {
+    return fetch(endpoint: endpoint, queryStrings: [], type: type)
   }
   
 }

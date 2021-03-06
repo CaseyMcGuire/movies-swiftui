@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19D8EA47D2DA8913AEA1903A /* Pods_movies_swiftui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E11E86D5F55FEB6CCDEAF16 /* Pods_movies_swiftui.framework */; };
+		320F38F125F34ADA00150251 /* CreditResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320F38F025F34ADA00150251 /* CreditResult.swift */; };
 		3221ABA124393F8800E6B119 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA024393F8800E6B119 /* Env.swift */; };
 		3221ABA524398AA700E6B119 /* MovieScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA424398AA700E6B119 /* MovieScreen.swift */; };
 		3221ABA7243998FC00E6B119 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221ABA6243998FC00E6B119 /* Genre.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		23344905B0770EDFE9601BC5 /* Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		320F38F025F34ADA00150251 /* CreditResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditResult.swift; sourceTree = "<group>"; };
 		3221ABA024393F8800E6B119 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		3221ABA424398AA700E6B119 /* MovieScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScreen.swift; sourceTree = "<group>"; };
 		3221ABA6243998FC00E6B119 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				3221ABA6243998FC00E6B119 /* Genre.swift */,
 				3290E636243844FC00D16DA6 /* MovieResult.swift */,
+				320F38F025F34ADA00150251 /* CreditResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3221ABA524398AA700E6B119 /* MovieScreen.swift in Sources */,
+				320F38F125F34ADA00150251 /* CreditResult.swift in Sources */,
 				3221ABAA243A6A9900E6B119 /* HomeScreenViewModel.swift in Sources */,
 				3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */,
 				3290E630243843FC00D16DA6 /* Secrets.swift in Sources */,

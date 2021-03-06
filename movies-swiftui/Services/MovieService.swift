@@ -15,9 +15,15 @@ class MovieService {
   
   let apiService = ApiService()
   
-  func fetchMovie(id: Int) -> Promise<MovieResult> {
+  func fetchMovie(id: Int, appendToResponse: [MovieAppendToResponse] = []) -> Promise<MovieResult> {
     let url = MovieService.endpoint + String(id)
-    return apiService.fetch(endpoint: url, type: MovieResult.self)
+    var appendToResponse = appendToResponse.isEmpty ? "" : appendToResponse.reduce("") { acc, next in
+      acc + "," + next.rawValue
+    }
+    if !appendToResponse.isEmpty {
+      appendToResponse = "append_to_response=" + String(appendToResponse.dropFirst())
+    }
+    return apiService.fetch(endpoint: url, queryStrings: [appendToResponse], type: MovieResult.self)
   }
   
   func fetchPopular() -> Promise<MovieResultList> {
@@ -48,4 +54,9 @@ enum MovieCollectionType: String {
     TRENDING = "trending/movie/day",
     UPCOMING = "upcoming"
 
+}
+
+
+enum MovieAppendToResponse: String {
+  case credits = "credits"
 }

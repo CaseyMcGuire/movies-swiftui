@@ -34,10 +34,9 @@ struct MovieScreen : View {
 }
 
 struct MovieScreenLoaded : View {
-  @State var movie: MovieResult
+  var movie: MovieResult
   
   var body: some View {
-    
     VStack(alignment: .leading, spacing: 4) {
       Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W780)!)
         .resizable()
@@ -57,10 +56,17 @@ struct MovieScreenLoaded : View {
         }.offset(y: -140)
         .padding(.bottom, -140)
         HStack {
-          VStack {
-            Text(String(self.movie.overview))
+          VStack(alignment: .leading) {
+            Text("Overview")
               .font(.subheadline)
+              .bold()
+              .padding(.bottom, 1)
+            Text(String(self.movie.overview))
+              .fontWeight(.light)
+              .font(.subheadline)
+
           }
+        
           Spacer()
         }
         Spacer()

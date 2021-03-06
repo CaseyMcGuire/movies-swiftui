@@ -15,7 +15,7 @@ class MovieScreenViewModel: ObservableObject {
   private let movieService = MovieService()
   
   func load(movieId: Int) {
-    movieService.fetchMovie(id: movieId).then { result in
+    movieService.fetchMovie(id: movieId, appendToResponse: [.credits]).then { result in
       self.loadingState = .loaded(result)
     }
     .catch { err in
