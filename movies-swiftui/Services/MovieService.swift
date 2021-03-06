@@ -17,13 +17,12 @@ class MovieService {
   
   func fetchMovie(id: Int, appendToResponse: [MovieAppendToResponse] = []) -> Promise<MovieResult> {
     let url = MovieService.endpoint + String(id)
-    var appendToResponse = appendToResponse.isEmpty ? "" : appendToResponse.reduce("") { acc, next in
+    let appendToResponse = appendToResponse.isEmpty ? "" : appendToResponse.reduce("") { acc, next in
       acc + "," + next.rawValue
     }
-    if !appendToResponse.isEmpty {
-      appendToResponse = "append_to_response=" + String(appendToResponse.dropFirst())
-    }
-    return apiService.fetch(endpoint: url, queryStrings: [appendToResponse], type: MovieResult.self)
+
+    let queries = !appendToResponse.isEmpty ? ["append_to_response": String(appendToResponse.dropFirst())] : [:]
+    return apiService.fetch(endpoint: url, queryStrings: queries, type: MovieResult.self)
   }
   
   func fetchPopular() -> Promise<MovieResultList> {

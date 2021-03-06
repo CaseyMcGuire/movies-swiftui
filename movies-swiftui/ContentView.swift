@@ -48,6 +48,8 @@ struct ContentView: View {
     ).then { popular, trending, upcoming, nowPlaying in
       self.popularMovies = popular.results
       self.trendingMovies = trending.results
+    }.catch { err in
+      print(err)
     }
 
   }
