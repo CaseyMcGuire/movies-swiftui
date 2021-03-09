@@ -23,6 +23,13 @@ class TMDBImageUtil {
     }
     return UIImage(data: imageData)
   }
+  
+  public static func createImageMaybe(imagePath: String?, imageSize: ImageSize) -> UIImage? {
+    guard let imagePath = imagePath else {
+      return nil
+    }
+    return self.createImage(imagePath: imagePath, imageSize: imageSize)
+  }
 }
 
 enum ImageSize: String {

@@ -24,8 +24,8 @@ struct MovieScreen : View {
           movieViewModel.load(movieId: self.movieId)
         }
         .navigationBarTitleDisplayMode(.inline)
-    case .loaded(let movieResult):
-      MovieScreenLoaded(movie: movieResult)
+    case .loaded(let movieDetails):
+      MovieDetailScreen(movie: movieDetails)
         .navigationBarTitleDisplayMode(.inline)
     case .error:
       Text("error")
@@ -33,44 +33,81 @@ struct MovieScreen : View {
   }
 }
 
-struct MovieScreenLoaded : View {
-  var movie: MovieResult
+struct MovieDetailScreen : View {
+  var movie: MovieScreenViewModel.MovieDetails
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 4) {
-      Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!, imageSize: .W780)!)
-        .resizable()
-        .scaledToFit()
-        .overlay(TintOverlay())
-      VStack(alignment: .leading) {
-        HStack {
-          MoviePoster(backdropPath: movie.posterPath)
-          Spacer()
-          VStack {
-            Text(String(self.movie.title))
-              .font(.headline)
-            Text(String(self.movie.tagline!))
-              .font(.subheadline)
-          }
-          Spacer()
-        }.offset(y: -140)
-        .padding(.bottom, -140)
-        HStack {
-          VStack(alignment: .leading) {
-            Text("Overview")
-              .font(.subheadline)
-              .bold()
-              .padding(.bottom, 1)
-            Text(String(self.movie.overview))
-              .fontWeight(.light)
-              .font(.subheadline)
-
-          }
+    ScrollView{
+      VStack(alignment: .leading, spacing: 4) {
+        Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!,
+                                                 imageSize: .W780)!)
+          .resizable()
+          .scaledToFit()
+          .overlay(TintOverlay())
         
+        
+        VStack(alignment: .leading) {
+          HStack {
+            MoviePoster(backdropPath: movie.posterPath)
+            Spacer()
+            VStack {
+              Text(String(self.movie.title))
+                .font(.headline)
+              if let tagline = movie.tagline {
+                Text(String(tagline))
+                  .font(.subheadline)
+              }
+            }
+            Spacer()
+          }
+          .offset(y: -140)
+          .padding(.bottom, -140)
+          
+          
+          HStack {
+            VStack(alignment: .leading) {
+              Text("Overview")
+                .font(.system(size: 20))
+                .fontWeight(.medium)
+                .padding(.bottom, 1)
+              
+              if let overviewText = self.movie.overviewText {
+                Text(overviewText)
+                  .fontWeight(.light)
+                  .font(.subheadline)
+              }
+            }
+            
+            Spacer()
+          }.padding(.vertical, 12)
+          CreditsCarousel(cast: self.movie.castMembers)
           Spacer()
+        }.padding(10)
+      }
+    }
+  }
+}
+
+struct CreditsCarousel : View {
+  var cast: [MovieScreenViewModel.CastDetail]
+  
+  var body: some View {
+    Text("Actors")
+      .font(.system(size: 20))
+      .fontWeight(.medium)
+    
+    ScrollView(.horizontal) {
+      HStack {
+        ForEach(self.cast, id: \.id) { result in
+          VStack {
+            MoviePoster(backdropPath: result.profilePath)
+              .padding(.horizontal, 4)
+            Text(result.name)
+              .font(.system(size: 17))
+              .fontWeight(.light)
+          }
         }
-        Spacer()
-      }.padding(10)
+      }
     }
   }
 }
