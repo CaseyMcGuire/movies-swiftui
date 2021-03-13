@@ -62,7 +62,7 @@ struct MovieDetailScreen : View {
           }
           .offset(y: backdropImage != nil ? -140 : 0)
           .padding(.bottom, backdropImage != nil ? -140 : 0)
-          
+//          MovieInfoRow()
           HStack {
             VStack(alignment: .leading) {
               Text("Overview")
@@ -86,37 +86,6 @@ struct MovieDetailScreen : View {
     }
   }
 }
-
-struct CreditsCarousel : View {
-  var cast: [MovieScreenViewModel.CastDetail]
-  
-  var body: some View {
-    Text("Actors")
-      .font(.system(size: 20))
-      .fontWeight(.medium)
-    
-    ScrollView(.horizontal) {
-      HStack {
-        ForEach(self.cast, id: \.id) { result in
-          VStack {
-            MoviePoster(backdropPath: result.profilePath, size: .medium)
-              .padding(.horizontal, 4)
-            Text(result.name)
-              .font(.system(size: 12))
-              .fontWeight(.light)
-            if let characterName = result.characterName {
-              Text(characterName)
-                .font(.system(size: 12))
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-            }
-          }.frame(width: 100, height: 200)
-        }
-      }
-    }
-  }
-}
-
 
 struct MovieScreen_Previews: PreviewProvider {
   static var previews: some View {

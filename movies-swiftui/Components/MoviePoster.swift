@@ -12,10 +12,8 @@ struct MoviePoster: View {
   
   let backdropPath: String?
   var size: MoviePosterSize = .medium
-  
-  private let defaultWidth: CGFloat = 100
-  private let defaultHeight: CGFloat = 150
-  
+  var circle = false
+
   private let smallWidth: CGFloat = 50
   private let mediumWidth: CGFloat = 100
   private let largeWidth: CGFloat = 150
@@ -37,18 +35,42 @@ struct MoviePoster: View {
     let height = width * (3/2)
     if let backdropPath = self.backdropPath {
       if let image = TMDBImageUtil.createImage(imagePath: backdropPath, imageSize: .W300) {
-        Image(uiImage: image)
-          .resizable()
-          .frame(width: width, height: height)
+        if self.circle {
+          Image(uiImage: image)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: width, height: width)
+            .clipShape(Circle())
+        }
+        else {
+          Image(uiImage: image)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: width, height: height)
+        }
       } else {
+        if self.circle {
+          Circle()
+            .fill(Color.gray)
+            .frame(width: width, height: width)
+        }
+        else {
+          Rectangle()
+            .fill(Color.gray)
+            .frame(width: width, height: height)
+        }
+      }
+    } else {
+      if self.circle {
+        Circle()
+          .fill(Color.gray)
+          .frame(width: width, height: width)
+      }
+      else {
         Rectangle()
           .fill(Color.gray)
           .frame(width: width, height: height)
       }
-    } else {
-      Rectangle()
-        .fill(Color.gray)
-        .frame(width: width, height: height)
     }
     
   }
@@ -62,6 +84,6 @@ enum MoviePosterSize {
 
 struct MoviePoster_Previews: PreviewProvider {
   static var previews: some View {
-    MoviePoster(backdropPath: "lasdkfj")
+    MoviePoster(backdropPath: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg")
   }
 }

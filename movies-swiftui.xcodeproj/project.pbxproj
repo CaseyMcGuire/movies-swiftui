@@ -29,6 +29,8 @@
 		3290E637243844FC00D16DA6 /* MovieResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E636243844FC00D16DA6 /* MovieResult.swift */; };
 		3290E63A2438490700D16DA6 /* TMDBImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E6392438490700D16DA6 /* TMDBImageUtil.swift */; };
 		3298D1FA25F75F600075F497 /* TintOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D1F925F75F600075F497 /* TintOverlay.swift */; };
+		3298D1FF25FC8BEB0075F497 /* MovieInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */; };
+		3298D20425FD515E0075F497 /* CreditsCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D20325FD515E0075F497 /* CreditsCarousel.swift */; };
 		63FED798E518D7D25B10F14C /* Pods_movies_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA2E2829A47951E99FA488F /* Pods_movies_swiftuiTests.framework */; };
 		9D48989381BB418C05EA803D /* Pods_movies_swiftui_movies_swiftuiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509E8FA8092732B234EADB7 /* Pods_movies_swiftui_movies_swiftuiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		3290E636243844FC00D16DA6 /* MovieResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResult.swift; sourceTree = "<group>"; };
 		3290E6392438490700D16DA6 /* TMDBImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImageUtil.swift; sourceTree = "<group>"; };
 		3298D1F925F75F600075F497 /* TintOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintOverlay.swift; sourceTree = "<group>"; };
+		3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoRow.swift; sourceTree = "<group>"; };
+		3298D20325FD515E0075F497 /* CreditsCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsCarousel.swift; sourceTree = "<group>"; };
 		5C4AAC864853A128C77C75AD /* Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		64B659F5E2EBECE303450271 /* Pods-movies-swiftui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui/Pods-movies-swiftui.release.xcconfig"; sourceTree = "<group>"; };
 		7E11E86D5F55FEB6CCDEAF16 /* Pods_movies_swiftui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies_swiftui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,8 @@
 			children = (
 				3223B46325CE51EC00264726 /* MovieScreenViewModel.swift */,
 				3221ABA424398AA700E6B119 /* MovieScreen.swift */,
+				3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */,
+				3298D20325FD515E0075F497 /* CreditsCarousel.swift */,
 			);
 			path = MovieScreen;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 			files = (
 				3221ABA524398AA700E6B119 /* MovieScreen.swift in Sources */,
 				320F38F125F34ADA00150251 /* CreditResult.swift in Sources */,
+				3298D20425FD515E0075F497 /* CreditsCarousel.swift in Sources */,
 				3221ABAA243A6A9900E6B119 /* HomeScreenViewModel.swift in Sources */,
 				3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */,
 				3290E630243843FC00D16DA6 /* Secrets.swift in Sources */,
@@ -527,6 +534,7 @@
 				3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */,
 				3221ABA124393F8800E6B119 /* Env.swift in Sources */,
 				3290E637243844FC00D16DA6 /* MovieResult.swift in Sources */,
+				3298D1FF25FC8BEB0075F497 /* MovieInfoRow.swift in Sources */,
 				3290E62D243843B600D16DA6 /* ApiService.swift in Sources */,
 				3290E63A2438490700D16DA6 /* TMDBImageUtil.swift in Sources */,
 				3223B46425CE51EC00264726 /* MovieScreenViewModel.swift in Sources */,
