@@ -66,10 +66,10 @@ class MovieScreenViewModel: ObservableObject {
           return []
         }
         let castDetails: [CastDetail?] = cast.map { actor in
-          guard let id = actor.id, let name = actor.name, let profilePath = actor.profilePath else {
+          guard let id = actor.id, let name = actor.name else {
             return nil
           }
-          return CastDetail(id: id, name: name, profilePath: profilePath)
+          return CastDetail(id: id, name: name, characterName: actor.character, profilePath: actor.profilePath)
         }
         return castDetails[...6]
           .compactMap { $0 }// to filter nulls
@@ -80,6 +80,7 @@ class MovieScreenViewModel: ObservableObject {
   struct CastDetail {
     let id: Int
     let name: String
+    let characterName: String?
     let profilePath: String?
   }
 }

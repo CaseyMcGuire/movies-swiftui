@@ -104,6 +104,12 @@ struct CreditsCarousel : View {
             Text(result.name)
               .font(.system(size: 12))
               .fontWeight(.light)
+            if let characterName = result.characterName {
+              Text(characterName)
+                .font(.system(size: 12))
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+            }
           }.frame(width: 100, height: 200)
         }
       }
