@@ -37,11 +37,13 @@ struct MovieDetailScreen : View {
   var body: some View {
     ScrollView{
       VStack(alignment: .leading, spacing: 4) {
-        Image(uiImage: TMDBImageUtil.createImage(imagePath: movie.backdropPath!,
-                                                 imageSize: .W780)!)
-          .resizable()
-          .scaledToFit()
-          .overlay(TintOverlay())
+        let backdropImage =  TMDBImageUtil.createImageMaybe(imagePath: movie.backdropPath, imageSize: .W780)
+        if let backdropImage = backdropImage {
+          Image(uiImage: backdropImage)
+            .resizable()
+            .scaledToFit()
+            .overlay(TintOverlay())
+        }
         
         
         VStack(alignment: .leading) {
@@ -58,9 +60,8 @@ struct MovieDetailScreen : View {
             }
             Spacer()
           }
-          .offset(y: -140)
-          .padding(.bottom, -140)
-          
+          .offset(y: backdropImage != nil ? -140 : 0)
+          .padding(.bottom, backdropImage != nil ? -140 : 0)
           
           HStack {
             VStack(alignment: .leading) {
@@ -98,12 +99,12 @@ struct CreditsCarousel : View {
       HStack {
         ForEach(self.cast, id: \.id) { result in
           VStack {
-            MoviePoster(backdropPath: result.profilePath)
+            MoviePoster(backdropPath: result.profilePath, size: .medium)
               .padding(.horizontal, 4)
             Text(result.name)
-              .font(.system(size: 17))
+              .font(.system(size: 12))
               .fontWeight(.light)
-          }
+          }.frame(width: 100, height: 200)
         }
       }
     }
