@@ -33,6 +33,7 @@ struct ContentView: View {
       }
       .navigationTitle("Movies")
     }
+    .navigationViewStyle(StackNavigationViewStyle())
 
 
     }

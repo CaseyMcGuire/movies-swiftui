@@ -9,9 +9,9 @@
 import Foundation
 
 class MovieScreenViewModel: ObservableObject {
-
+  
   @Published var loadingState: LoadingState<MovieDetails> = .loading
-
+  
   private let movieService = MovieService()
   
   func load(movieId: Int) {
@@ -26,7 +26,7 @@ class MovieScreenViewModel: ObservableObject {
   private func parse(_ result: MovieResult) -> MovieDetails {
     return MovieDetails(result: result)
   }
-
+  
   struct MovieDetails {
     let result: MovieResult
     
@@ -58,6 +58,45 @@ class MovieScreenViewModel: ObservableObject {
       get {
         result.overview
       }
+    }
+    
+    var releaseDate: String? {
+      if let releaseDate = result.releaseDate {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: releaseDate)
+        let dateFormatterPrinter = DateFormatter()
+        dateFormatterPrinter.dateStyle = .medium
+        dateFormatterPrinter.timeStyle = .none
+        dateFormatterPrinter.locale = Locale.current
+        if let date = date {
+          return dateFormatterPrinter.string(from: date)
+        }
+        else {
+          return nil
+        }
+      }
+      else {
+        return result.releaseDate
+      }
+    }
+    
+    var rating: String? {
+      if let voteAverage = result.voteAverage {
+        return String(voteAverage)
+      }
+      else {
+        return nil
+      }
+    }
+    
+    var language: String? {
+      if let languageCode = result.originalLanguage {
+        if let language = NSLocale.current.localizedString(forLanguageCode: languageCode) {
+          return language
+        }
+      }
+      return result.originalLanguage
     }
     
     var castMembers: [CastDetail] {

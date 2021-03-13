@@ -47,38 +47,39 @@ struct MovieDetailScreen : View {
         
         
         VStack(alignment: .leading) {
-          HStack {
-            MoviePoster(backdropPath: movie.posterPath)
-            Spacer()
-            VStack {
-              Text(String(self.movie.title))
-                .font(.headline)
-              if let tagline = movie.tagline {
-                Text(String(tagline))
-                  .font(.subheadline)
+          VStack {
+            HStack {
+              MoviePoster(backdropPath: movie.posterPath)
+              Spacer()
+              VStack {
+                Text(String(self.movie.title))
+                  .font(.headline)
+                if let tagline = movie.tagline {
+                  Text(String(tagline))
+                    .font(.subheadline)
+                }
               }
+              Spacer()
             }
-            Spacer()
+            .offset(y: backdropImage != nil ? -140 : 0)
+            .padding(.bottom, backdropImage != nil ? -140 : 0)
           }
-          .offset(y: backdropImage != nil ? -140 : 0)
-          .padding(.bottom, backdropImage != nil ? -140 : 0)
-//          MovieInfoRow()
+          .padding(.bottom, 12)
+          MovieInfoRow(rating: movie.rating, releaseDate: movie.releaseDate, language: movie.language)
           HStack {
             VStack(alignment: .leading) {
               Text("Overview")
                 .font(.system(size: 20))
                 .fontWeight(.medium)
                 .padding(.bottom, 1)
-              
               if let overviewText = self.movie.overviewText {
                 Text(overviewText)
                   .fontWeight(.light)
                   .font(.subheadline)
               }
             }
-            
             Spacer()
-          }.padding(.vertical, 12)
+          }.padding(.bottom, 12)
           CreditsCarousel(cast: self.movie.castMembers)
           Spacer()
         }.padding(10)
