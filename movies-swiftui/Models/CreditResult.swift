@@ -8,6 +8,7 @@
 
 struct CreditResult: Decodable {
   let cast: [CastCreditResult]?
+  let crew: [CrewCreditResult]?
 }
 
 struct CastCreditResult: Decodable {
@@ -23,4 +24,17 @@ struct CastCreditResult: Decodable {
   let character: String?
   let creditId: String?
   let order: Int?
+}
+
+struct CrewCreditResult: Decodable {
+  let adult: Bool?
+  let gender: Int?
+  let id: Int?
+  let knownForDepartment: String?
+  let name: String?
+  let originalName: String?
+  let popularity: Double?
+  let profilePath: String?
+  let department: String?
+  let job: String?
 }

@@ -114,7 +114,23 @@ class MovieScreenViewModel: ObservableObject {
           .compactMap { $0 }// to filter nulls
       }
     }
+    
+    var director: CastDetail? {
+      guard let crew = self.result.credits?.crew else { return nil }
+      let index = crew.firstIndex { result in
+        result.job == "Director"
+      }
+      if let index = index {
+        let director = crew[index]
+        if let id = director.id, let name = director.name, let job = director.job {
+          return CastDetail(id: id, name: name, characterName: job, profilePath: director.profilePath)
+        }
+      }
+      return nil
+    }
   }
+  
+
   
   struct CastDetail {
     let id: Int

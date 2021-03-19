@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct CreditsCarousel : View {
+  var title: String
   var cast: [MovieScreenViewModel.CastDetail]
+  
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text("Actors")
+      Text(self.title)
         .font(.system(size: 20))
         .fontWeight(.medium)
       ScrollView(.horizontal) {
@@ -43,7 +45,7 @@ struct CreditsCarousel : View {
 
 struct CreditsCarousel_Previews: PreviewProvider {
   static var previews: some View {
-    CreditsCarousel(cast: [
+    CreditsCarousel(title: "Actors", cast: [
                       .init(id: 1,
                             name: "Gad Gadot",
                             characterName: "Diana Prince / Wonder Woman",

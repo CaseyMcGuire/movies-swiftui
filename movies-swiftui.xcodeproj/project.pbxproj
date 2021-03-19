@@ -18,7 +18,7 @@
 		324E11E624393B9A001CAD62 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 324E11E524393B9A001CAD62 /* .gitignore */; };
 		3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FB2438437000D16DA6 /* AppDelegate.swift */; };
 		3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FD2438437000D16DA6 /* SceneDelegate.swift */; };
-		3290E6002438437000D16DA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FF2438437000D16DA6 /* ContentView.swift */; };
+		3290E6002438437000D16DA6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FF2438437000D16DA6 /* HomeScreen.swift */; };
 		3290E6022438437200D16DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6012438437200D16DA6 /* Assets.xcassets */; };
 		3290E6052438437200D16DA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6042438437200D16DA6 /* Preview Assets.xcassets */; };
 		3290E6132438437200D16DA6 /* movies_swiftuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E6122438437200D16DA6 /* movies_swiftuiTests.swift */; };
@@ -65,7 +65,7 @@
 		3290E5F82438437000D16DA6 /* movies-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movies-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3290E5FB2438437000D16DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3290E5FD2438437000D16DA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3290E5FF2438437000D16DA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3290E5FF2438437000D16DA6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		3290E6012438437200D16DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3290E6042438437200D16DA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3290E6092438437200D16DA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				3290E62B2438439D00D16DA6 /* Services */,
 				3290E5FB2438437000D16DA6 /* AppDelegate.swift */,
 				3290E5FD2438437000D16DA6 /* SceneDelegate.swift */,
-				3290E5FF2438437000D16DA6 /* ContentView.swift */,
+				3290E5FF2438437000D16DA6 /* HomeScreen.swift */,
 				3290E6012438437200D16DA6 /* Assets.xcassets */,
 				3290E6092438437200D16DA6 /* Info.plist */,
 				3290E6032438437200D16DA6 /* Preview Content */,
@@ -540,7 +540,7 @@
 				3223B46425CE51EC00264726 /* MovieScreenViewModel.swift in Sources */,
 				3223B46D25DCE14500264726 /* MoviePoster.swift in Sources */,
 				3298D1FA25F75F600075F497 /* TintOverlay.swift in Sources */,
-				3290E6002438437000D16DA6 /* ContentView.swift in Sources */,
+				3290E6002438437000D16DA6 /* HomeScreen.swift in Sources */,
 				3290E634243844CA00D16DA6 /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

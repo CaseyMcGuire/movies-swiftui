@@ -23,7 +23,7 @@ struct MovieScreen : View {
         }
         .navigationBarTitleDisplayMode(.inline)
     case .loaded(let movieDetails):
-      MovieDetailScreen(movie: movieDetails)
+      MovieScreenImpl(movie: movieDetails)
         .navigationBarTitleDisplayMode(.inline)
     case .error:
       Text("error")
@@ -31,7 +31,7 @@ struct MovieScreen : View {
   }
 }
 
-struct MovieDetailScreen : View {
+struct MovieScreenImpl : View {
   var movie: MovieScreenViewModel.MovieDetails
   
   var body: some View {
@@ -80,7 +80,12 @@ struct MovieDetailScreen : View {
             }
             Spacer()
           }.padding(.bottom, 12)
-          CreditsCarousel(cast: self.movie.castMembers)
+          if !self.movie.castMembers.isEmpty {
+            CreditsCarousel(title: "Actors", cast: self.movie.castMembers)
+          }
+          if let director = self.movie.director {
+            CreditsCarousel(title: "Director", cast: [director])
+          }
           Spacer()
         }.padding(10)
       }

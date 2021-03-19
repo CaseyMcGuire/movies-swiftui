@@ -9,7 +9,7 @@
 import SwiftUI
 import Promises
 
-struct ContentView: View {
+struct HomeScreen: View {
   
   private let movieService = MovieService()
   private let viewModel = HomeScreenViewModel()
@@ -52,6 +52,8 @@ struct ContentView: View {
     }.catch { err in
       print(err)
     }
+    
+    
 
   }
 }
@@ -63,7 +65,9 @@ struct MoviePosterScroll : View {
   var body: some View {
     
     VStack(alignment: .leading) {
-      Text(self.title).font(.title3)
+      Text(self.title)
+        .font(.title)
+        .fontWeight(.bold)
       ScrollView(.horizontal, showsIndicators: false) {
         HStack {
           ForEach(movies, id: \.id) { item in
@@ -85,6 +89,6 @@ struct MoviePosterScroll : View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    HomeScreen()
   }
 }
