@@ -16,7 +16,7 @@ struct CreditsCarousel : View {
   var body: some View {
     VStack(alignment: .leading) {
       Text(self.title)
-        .font(.system(size: 20))
+        .font(.system(size: 24))
         .fontWeight(.medium)
       ScrollView(.horizontal) {
         HStack {

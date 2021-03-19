@@ -53,10 +53,12 @@ struct MovieScreenImpl : View {
               Spacer()
               VStack {
                 Text(String(self.movie.title))
-                  .font(.headline)
+                  .font(.system(size: 24))
+                  .fontWeight(.semibold)
+
                 if let tagline = movie.tagline {
                   Text(String(tagline))
-                    .font(.subheadline)
+                    .font(.system(size: 17))
                 }
               }
               Spacer()
@@ -69,13 +71,13 @@ struct MovieScreenImpl : View {
           HStack {
             VStack(alignment: .leading) {
               Text("Overview")
-                .font(.system(size: 20))
+                .font(.system(size: 24))
                 .fontWeight(.medium)
                 .padding(.bottom, 1)
               if let overviewText = self.movie.overviewText {
                 Text(overviewText)
                   .fontWeight(.light)
-                  .font(.subheadline)
+                  .font(.system(size: 17))
               }
             }
             Spacer()
