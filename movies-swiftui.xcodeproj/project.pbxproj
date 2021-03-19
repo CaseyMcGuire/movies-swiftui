@@ -139,6 +139,7 @@
 		3221ABA224398A8E00E6B119 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				32FD34612604783F00FBA12E /* HomeScreen */,
 				3221ABA324398A9600E6B119 /* MovieScreen */,
 			);
 			path = Screens;
@@ -158,7 +159,6 @@
 		3221ABA8243A6A8900E6B119 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3221ABA9243A6A9900E6B119 /* HomeScreenViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -207,7 +207,6 @@
 				3290E62B2438439D00D16DA6 /* Services */,
 				3290E5FB2438437000D16DA6 /* AppDelegate.swift */,
 				3290E5FD2438437000D16DA6 /* SceneDelegate.swift */,
-				3290E5FF2438437000D16DA6 /* HomeScreen.swift */,
 				32FD345C2604758000FBA12E /* MainView.swift */,
 				3290E6012438437200D16DA6 /* Assets.xcassets */,
 				3290E6092438437200D16DA6 /* Info.plist */,
@@ -276,6 +275,15 @@
 				3290E6392438490700D16DA6 /* TMDBImageUtil.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		32FD34612604783F00FBA12E /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3221ABA9243A6A9900E6B119 /* HomeScreenViewModel.swift */,
+				3290E5FF2438437000D16DA6 /* HomeScreen.swift */,
+			);
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		4F37F3642C2E0A010A97EA22 /* Frameworks */ = {

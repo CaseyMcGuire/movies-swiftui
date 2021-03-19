@@ -12,49 +12,32 @@ import Promises
 struct HomeScreen: View {
   
   private let movieService = MovieService()
-  private let viewModel = HomeScreenViewModel()
-  
-  @State private var popularMovies = [MovieResult]()
-  @State private var trendingMovies = [MovieResult]()
+  @ObservedObject var viewModel = HomeScreenViewModel()
   
   var body: some View {
-    if popularMovies.isEmpty {
+    switch self.viewModel.loadingState {
+    case .loading:
       ProgressView().onAppear(perform: load)
-    }
-    else {
-    NavigationView {
-      ScrollView {
-        VStack(alignment: .leading) {
-          MoviePosterScroll(movies: popularMovies, title: "Popular")
-          MoviePosterScroll(movies: trendingMovies, title: "Trending")
-          Spacer()
+    case .error:
+      Text("error")
+    case .loaded(let details):
+      NavigationView {
+        ScrollView {
+          VStack(alignment: .leading) {
+            MoviePosterScroll(movies: details.nowPlayingMovies, title: "Popular")
+            MoviePosterScroll(movies: details.trendingMovies, title: "Trending")
+            Spacer()
+          }
+
         }
-
+        .navigationTitle("Movies")
       }
-      .navigationTitle("Movies")
-    }
-    .navigationViewStyle(StackNavigationViewStyle())
-
-
+      .navigationViewStyle(StackNavigationViewStyle())
     }
   }
   
-  
   func load() {
-    all(
-      movieService.fetchPopular(),
-      movieService.fetchTrending(),
-      movieService.fetchUpcoming(),
-      movieService.fetchNowPlaying()
-    ).then { popular, trending, upcoming, nowPlaying in
-      self.popularMovies = popular.results
-      self.trendingMovies = trending.results
-    }.catch { err in
-      print(err)
-    }
-    
-    
-
+    viewModel.load()
   }
 }
 
