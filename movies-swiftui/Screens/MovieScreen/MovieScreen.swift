@@ -36,57 +36,34 @@ struct MovieScreenImpl : View {
   
   var body: some View {
     ScrollView{
-      VStack(alignment: .leading, spacing: 4) {
-        let backdropImage =  TMDBImageUtil.createImageMaybe(imagePath: movie.backdropPath, imageSize: .W780)
-        if let backdropImage = backdropImage {
-          Image(uiImage: backdropImage)
-            .resizable()
-            .scaledToFit()
-            .overlay(TintOverlay())
-        }
-        
-        
-        VStack(alignment: .leading) {
-          VStack {
-            HStack {
-              MoviePoster(backdropPath: movie.posterPath)
-              Spacer()
-              VStack {
-                Text(String(self.movie.title))
-                  .font(.system(size: 24))
-                  .fontWeight(.semibold)
-
-                if let tagline = movie.tagline {
-                  Text(String(tagline))
-                    .font(.system(size: 17))
-                }
-              }
-              Spacer()
-            }
-            .offset(y: backdropImage != nil ? -140 : 0)
-            .padding(.bottom, backdropImage != nil ? -140 : 0)
-          }
-          .padding(.bottom, 12)
+      VStack {
+        MovieScreenHeader(movie: self.movie)
+        VStack {
           MovieInfoRow(rating: movie.rating, releaseDate: movie.releaseDate, language: movie.language)
-          HStack {
-            VStack(alignment: .leading) {
-              Text("Overview")
-                .font(.system(size: 24))
-                .fontWeight(.medium)
-                .padding(.bottom, 1)
-              if let overviewText = self.movie.overviewText {
+          if let overviewText = self.movie.overviewText {
+            HStack {
+              VStack(alignment: .leading) {
+                Text("Overview")
+                  .font(.system(size: 24))
+                  .fontWeight(.medium)
+                  .padding(.bottom, 1)
+                
                 Text(overviewText)
                   .fontWeight(.light)
                   .font(.system(size: 17))
               }
-            }
-            Spacer()
-          }.padding(.bottom, 12)
+              
+              Spacer()
+            }.padding(.bottom, 12)
+          }
           if !self.movie.castMembers.isEmpty {
             CreditsCarousel(title: "Actors", cast: self.movie.castMembers)
           }
           if let director = self.movie.director {
             CreditsCarousel(title: "Director", cast: [director])
+          }
+          if let similarMovies = self.movie.similarMovies {
+            MoviePosterScroll(movies: similarMovies)
           }
           Spacer()
         }.padding(10)
@@ -100,4 +77,3 @@ struct MovieScreen_Previews: PreviewProvider {
     MovieScreen(movieId: 464052)
   }
 }
-

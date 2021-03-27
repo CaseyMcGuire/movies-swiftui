@@ -58,4 +58,5 @@ enum MovieCollectionType: String {
 
 enum MovieAppendToResponse: String {
   case credits = "credits"
+  case similar = "similar"
 }

@@ -15,7 +15,7 @@ class MovieScreenViewModel: ObservableObject {
   private let movieService = MovieService()
   
   func load(movieId: Int) {
-    movieService.fetchMovie(id: movieId, appendToResponse: [.credits]).then { result in
+    movieService.fetchMovie(id: movieId, appendToResponse: [.credits, .similar]).then { result in
       self.loadingState = .loaded(self.parse(result))
     }
     .catch { err in
@@ -110,7 +110,7 @@ class MovieScreenViewModel: ObservableObject {
           }
           return CastDetail(id: id, name: name, characterName: actor.character, profilePath: actor.profilePath)
         }
-        return castDetails[...6]
+        return castDetails
           .compactMap { $0 }// to filter nulls
       }
     }
@@ -127,6 +127,13 @@ class MovieScreenViewModel: ObservableObject {
         }
       }
       return nil
+    }
+    
+    var similarMovies: [MoviePosterData] {
+      guard let similarMovies = self.result.similar?.results else {
+        return []
+      }
+      return similarMovies.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) }
     }
   }
   

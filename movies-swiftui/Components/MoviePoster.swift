@@ -11,6 +11,7 @@ import SwiftUI
 struct MoviePoster: View {
   
   let backdropPath: String?
+  var title: String? = nil
   var size: MoviePosterSize = .medium
   var circle = false
 
@@ -33,6 +34,7 @@ struct MoviePoster: View {
   var body: some View {
     let width = self.getWidth()
     let height = width * (3/2)
+    VStack {
     if let backdropPath = self.backdropPath {
       if let image = TMDBImageUtil.createImage(imagePath: backdropPath, imageSize: .W300) {
         if self.circle {
@@ -72,7 +74,14 @@ struct MoviePoster: View {
           .frame(width: width, height: height)
       }
     }
-    
+      if let title = self.title {
+        Text(title)
+          .font(.system(size: 12))
+          .foregroundColor(.gray)
+          .multilineTextAlignment(.center)
+          .lineLimit(3)
+      }
+    }.frame(width: width)
   }
 }
 
@@ -84,6 +93,6 @@ enum MoviePosterSize {
 
 struct MoviePoster_Previews: PreviewProvider {
   static var previews: some View {
-    MoviePoster(backdropPath: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg")
+    MoviePoster(backdropPath: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")
   }
 }

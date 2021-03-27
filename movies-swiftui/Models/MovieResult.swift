@@ -34,4 +34,5 @@ struct MovieResult: Decodable {
   let voteCount: Int?
   let releaseDate: String?
   let credits: CreditResult?
+  let similar: MovieResultList?
 }

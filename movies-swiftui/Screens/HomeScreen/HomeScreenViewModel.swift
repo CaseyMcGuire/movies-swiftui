@@ -21,8 +21,10 @@ class HomeScreenViewModel : ObservableObject {
       movieService.fetchUpcoming(),
       movieService.fetchNowPlaying()
     ).then { popular, trending, upcoming, nowPlaying in
-      let movies = [popular, trending, upcoming, nowPlaying].map { movieList in
-        return movieList.results.compactMap { $0 }
+      let movies: Array<Array<MoviePosterData>> = [popular, trending, upcoming, nowPlaying].map { movieList in
+        let movieResults = movieList.results.compactMap { $0 }
+        return movieResults.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title)}
+          
       }
       self.loadingState = .loaded(HomeScreenDetails(popularMovies: movies[0],
                                                     trendingMovies: movies[1],
@@ -33,8 +35,8 @@ class HomeScreenViewModel : ObservableObject {
 }
 
 struct HomeScreenDetails {
-  var popularMovies: Array<MovieResult>
-  var trendingMovies: Array<MovieResult>
-  var upcomingMovies: Array<MovieResult>
-  var nowPlayingMovies: Array<MovieResult>
+  var popularMovies: Array<MoviePosterData>
+  var trendingMovies: Array<MoviePosterData>
+  var upcomingMovies: Array<MoviePosterData>
+  var nowPlayingMovies: Array<MoviePosterData>
 }

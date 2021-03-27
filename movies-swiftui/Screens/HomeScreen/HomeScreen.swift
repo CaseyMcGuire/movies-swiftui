@@ -24,8 +24,14 @@ struct HomeScreen: View {
       NavigationView {
         ScrollView {
           VStack(alignment: .leading) {
-            MoviePosterScroll(movies: details.nowPlayingMovies, title: "Popular")
-            MoviePosterScroll(movies: details.trendingMovies, title: "Trending")
+            Text("Popular")
+              .font(.title)
+              .fontWeight(.bold)
+            MoviePosterScroll(movies: details.nowPlayingMovies)
+            Text("Popular")
+              .font(.title)
+              .fontWeight(.bold)
+            MoviePosterScroll(movies: details.trendingMovies)
             Spacer()
           }
 
@@ -41,32 +47,7 @@ struct HomeScreen: View {
   }
 }
 
-struct MoviePosterScroll : View {
-  var movies: [MovieResult]
-  var title: String
-  
-  var body: some View {
-    
-    VStack(alignment: .leading) {
-      Text(self.title)
-        .font(.title)
-        .fontWeight(.bold)
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack {
-          ForEach(movies, id: \.id) { item in
-            NavigationLink(destination: MovieScreen(movieId: item.id)) {
-              Image(uiImage: TMDBImageUtil.createImage(imagePath: item.posterPath!, imageSize: .W300)!)
-                .resizable()
-                .frame(width: 100, height: 150)
-                .scaledToFill()
-            }
-            .buttonStyle(PlainButtonStyle())
-          }
-        }
-      }
-    }.padding(4)
-  }
-}
+
 
 
 
