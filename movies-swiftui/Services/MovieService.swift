@@ -12,6 +12,7 @@ import Promises
 class MovieService {
   
   private static let endpoint = "movie/"
+  private static let personEndpont = "person/"
   
   let apiService = ApiService()
   
@@ -43,6 +44,11 @@ class MovieService {
   func fetchNowPlaying() -> Promise<MovieResultList> {
     let url = MovieService.endpoint + MovieCollectionType.NOW_PLAYING.rawValue
     return apiService.fetch(endpoint: url, type: MovieResultList.self)
+  }
+  
+  func fetchPerson(id: Int) -> Promise<PersonResult> {
+    let url = MovieService.personEndpont + String(id)
+    return apiService.fetch(endpoint: url, type: PersonResult.self)
   }
 }
 

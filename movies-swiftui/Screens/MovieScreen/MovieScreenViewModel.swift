@@ -147,10 +147,3 @@ class MovieScreenViewModel: ObservableObject {
   }
 }
 
-
-
-enum LoadingState<Value> {
-  case loading
-  case loaded(Value)
-  case error
-}

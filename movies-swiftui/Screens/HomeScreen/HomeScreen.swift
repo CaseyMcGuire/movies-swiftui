@@ -11,7 +11,6 @@ import Promises
 
 struct HomeScreen: View {
   
-  private let movieService = MovieService()
   @ObservedObject var viewModel = HomeScreenViewModel()
   
   var body: some View {

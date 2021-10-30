@@ -22,8 +22,11 @@ struct CreditsCarousel : View {
         HStack {
           ForEach(self.cast, id: \.id) { result in
             VStack {
-              MoviePoster(backdropPath: result.profilePath, size: .medium, circle: true)
-                .padding(.horizontal, 4)
+              VStack {
+                NavigationLink(destination: PeopleScreen(personId: result.id)) {
+                  MoviePoster(backdropPath: result.profilePath, size: .medium, circle: true)
+                    .padding(.horizontal, 4)
+                }
               Spacer()
               Text(result.name)
                 .font(.system(size: 12))
@@ -41,6 +44,7 @@ struct CreditsCarousel : View {
       }
     }
   }
+}
 }
 
 struct CreditsCarousel_Previews: PreviewProvider {

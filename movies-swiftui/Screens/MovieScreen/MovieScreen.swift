@@ -42,16 +42,7 @@ struct MovieScreenImpl : View {
           MovieInfoRow(rating: movie.rating, releaseDate: movie.releaseDate, language: movie.language)
           if let overviewText = self.movie.overviewText {
             HStack {
-              VStack(alignment: .leading) {
-                Text("Overview")
-                  .font(.system(size: 24))
-                  .fontWeight(.medium)
-                  .padding(.bottom, 1)
-                
-                Text(overviewText)
-                  .fontWeight(.light)
-                  .font(.system(size: 17))
-              }
+              TextBlock(title: "Overview", textBody: overviewText)
               
               Spacer()
             }.padding(.bottom, 12)
