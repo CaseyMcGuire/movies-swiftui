@@ -15,24 +15,19 @@ struct MovieScreen : View {
   var movieId: Int
   
   var body: some View {
-    switch movieViewModel.loadingState {
-    case .loading:
-      ProgressView()
-        .onAppear {
-          movieViewModel.load(movieId: self.movieId)
-        }
-        .navigationBarTitleDisplayMode(.inline)
-    case .loaded(let movieDetails):
-      MovieScreenImpl(movie: movieDetails)
-        .navigationBarTitleDisplayMode(.inline)
-    case .error:
-      Text("error")
-    }
+    LoadableView(viewModel: movieViewModel) { data in
+      MovieScreenImpl(movie: data)
+    }.onAppear(perform: load)
+    .navigationBarTitleDisplayMode(.inline)
+  }
+  
+  func load() {
+    movieViewModel.load(movieId: movieId)
   }
 }
 
 struct MovieScreenImpl : View {
-  var movie: MovieScreenViewModel.MovieDetails
+  var movie: MovieDetails
   
   var body: some View {
     ScrollView{
@@ -57,7 +52,7 @@ struct MovieScreenImpl : View {
             MoviePosterScroll(movies: similarMovies)
           }
           Spacer()
-        }.padding(10)
+        }.padding(12)
       }
     }
   }

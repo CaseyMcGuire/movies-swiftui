@@ -8,25 +8,25 @@
 
 import Foundation
 
-class MovieScreenViewModel: ObservableObject {
-  
-  @Published var loadingState: LoadingState<MovieDetails> = .loading
-  
+class MovieScreenViewModel: LoadableViewModel<MovieDetails> {
+
   private let movieService = MovieService()
   
   func load(movieId: Int) {
     movieService.fetchMovie(id: movieId, appendToResponse: [.credits, .similar]).then { result in
-      self.loadingState = .loaded(self.parse(result))
+      self.state = .loaded(self.parse(result))
     }
     .catch { err in
-      self.loadingState = .error
+      self.state = .error
     }
   }
   
   private func parse(_ result: MovieResult) -> MovieDetails {
     return MovieDetails(result: result)
   }
-  
+
+}
+
   struct MovieDetails {
     let result: MovieResult
     
@@ -135,15 +135,11 @@ class MovieScreenViewModel: ObservableObject {
       }
       return similarMovies.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) }
     }
-  }
-  
-
-  
-  struct CastDetail {
-    let id: Int
-    let name: String
-    let characterName: String?
-    let profilePath: String?
-  }
 }
 
+struct CastDetail {
+  let id: Int
+  let name: String
+  let characterName: String?
+  let profilePath: String?
+}

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MovieScreenHeader: View {
-  var movie: MovieScreenViewModel.MovieDetails
+  var movie: MovieDetails
   var body: some View {
     VStack {
       let backdropImage =  TMDBImageUtil.createImageMaybe(imagePath: movie.backdropPath, imageSize: .W780)

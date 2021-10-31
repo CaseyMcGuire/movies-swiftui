@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CreditsCarousel : View {
   var title: String
-  var cast: [MovieScreenViewModel.CastDetail]
+  var cast: [CastDetail]
   
   
   var body: some View {
