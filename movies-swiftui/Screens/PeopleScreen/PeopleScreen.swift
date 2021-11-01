@@ -19,7 +19,7 @@ struct PeopleScreen: View {
         VStack {
           PictureScreenHeader(backdropPath: data.profilePath, imagePath: nil, title: data.name, subtitle: nil, includeImage: false)
           VStack {
-            MovieInfoRow(rating: data.knownForDepartment, releaseDate: data.birthday, language: data.name)
+            InfoRowView(items: getItems(data))
             if let biography = data.biography {
               TextBlock(title: "Biography", textBody: biography)
             }
@@ -27,6 +27,17 @@ struct PeopleScreen: View {
         }
       }
     }.onAppear(perform: load)
+  }
+  
+  func getItems(_ details: PeopleDetails) -> [InfoRowItem] {
+    var arr: [InfoRowItem] = []
+    if let birthday = details.birthday {
+      arr.append(InfoRowItem(title: "Birthday", text: birthday))
+    }
+    if let knownFor = details.knownForDepartment {
+      arr.append(InfoRowItem(title: "Known For", text: knownFor))
+    }
+    return arr
   }
   
   func load() {

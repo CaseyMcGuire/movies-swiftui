@@ -17,46 +17,28 @@ struct MovieInfoRow: View {
     if self.rating == nil && self.releaseDate == nil && self.language == nil {
       EmptyView()
     } else {
-        HStack {
-          if let rating = self.rating {
-            MovieInfoRowItem(title: "Rating", text: rating)
-          }
-          if let releaseDate = self.releaseDate {
-            MovieInfoRowItem(title: "Release Date", text: releaseDate)
-          }
-          if let language = self.language {
-            MovieInfoRowItem(title: "Language", text: language)
-          }
-          
-        }
-        .padding(.bottom, 12)
+        InfoRowView(items: getItems())
+          .padding(.bottom, 12)
       }
   }
+  
+  private func getItems() -> [InfoRowItem] {
+    var arr: [InfoRowItem] = []
+    if let rating = self.rating {
+      arr.append(InfoRowItem(title: "Rating", text: rating))
+    }
+    if let releaseDate = self.releaseDate {
+      arr.append(InfoRowItem(title: "Release Date", text: releaseDate))
+    }
+    if let language = self.language {
+      arr.append(InfoRowItem(title: "Language", text: language))
+    }
+    return arr
+  }
 }
-
-
 
 struct MovieInfoRow_Previews: PreviewProvider {
   static var previews: some View {
     MovieInfoRow(rating: "8.2", releaseDate: "March 15, 2021", language: "English")
-  }
-}
-
-private struct MovieInfoRowItem: View {
-  var title: String
-  var text: String
-  var body: some View {
-    HStack {
-      Spacer()
-      VStack {
-        Text(title)
-          .font(.system(size: 17))
-          .fontWeight(.semibold)
-        Text(text)
-          .font(.system(size: 15))
-          .foregroundColor(.gray)
-      }
-      Spacer()
-    }
   }
 }
