@@ -17,17 +17,15 @@ struct PeopleScreen: View {
     LoadableView(viewModel: viewModel) { data in
       ScrollView {
         VStack {
-          HStack {
-            MoviePoster(backdropPath: data.profilePath, size: .large)
-            VStack {
-              if let name = data.name {
-                Text(name)
-              }
+          PictureScreenHeader(backdropPath: data.profilePath, imagePath: nil, title: data.name, subtitle: nil, includeImage: false)
+          VStack {
+            MovieInfoRow(rating: data.knownForDepartment, releaseDate: data.birthday, language: data.name)
+            if let biography = data.biography {
+              TextBlock(title: "Biography", textBody: biography)
             }
-          }
-          TextBlock(title: "Biography", textBody: data.biography!)
+          }.padding(10)
         }
-      }.padding(10)
+      }
     }.onAppear(perform: load)
   }
   

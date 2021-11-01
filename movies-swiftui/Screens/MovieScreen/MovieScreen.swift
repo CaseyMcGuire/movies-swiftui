@@ -16,7 +16,7 @@ struct MovieScreen : View {
   
   var body: some View {
     LoadableView(viewModel: movieViewModel) { data in
-      MovieScreenImpl(movie: data)
+      MovieScreenView(movie: data)
     }.onAppear(perform: load)
     .navigationBarTitleDisplayMode(.inline)
   }
@@ -26,13 +26,13 @@ struct MovieScreen : View {
   }
 }
 
-struct MovieScreenImpl : View {
+struct MovieScreenView : View {
   var movie: MovieDetails
   
   var body: some View {
     ScrollView{
       VStack {
-        MovieScreenHeader(movie: self.movie)
+        PictureScreenHeader(backdropPath: self.movie.backdropPath, imagePath: self.movie.posterPath, title: self.movie.title, subtitle: movie.tagline)
         VStack {
           MovieInfoRow(rating: movie.rating, releaseDate: movie.releaseDate, language: movie.language)
           if let overviewText = self.movie.overviewText {

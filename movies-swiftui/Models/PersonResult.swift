@@ -12,4 +12,8 @@ struct PersonResult : Decodable {
   var name: String?
   var biography: String?
   var profilePath: String?
+  var knownForDepartment: String?
+  var deathDay: String?
+  var placeOfBirth: String?
+  var birthday: String?
 }

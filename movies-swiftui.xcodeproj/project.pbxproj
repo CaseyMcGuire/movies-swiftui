@@ -21,6 +21,7 @@
 		3225FA0627253BC000E9F1BE /* LoadableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0527253BC000E9F1BE /* LoadableViewModel.swift */; };
 		3225FA0827253D4F00E9F1BE /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0727253D4F00E9F1BE /* LoadableView.swift */; };
 		3225FA0A272BA5D600E9F1BE /* TextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA09272BA5D600E9F1BE /* TextBlock.swift */; };
+		3225FA0C272F233D00E9F1BE /* PictureScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */; };
 		324E11E624393B9A001CAD62 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 324E11E524393B9A001CAD62 /* .gitignore */; };
 		3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FB2438437000D16DA6 /* AppDelegate.swift */; };
 		3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FD2438437000D16DA6 /* SceneDelegate.swift */; };
@@ -37,7 +38,6 @@
 		3298D1FA25F75F600075F497 /* TintOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D1F925F75F600075F497 /* TintOverlay.swift */; };
 		3298D1FF25FC8BEB0075F497 /* MovieInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */; };
 		3298D20425FD515E0075F497 /* CreditsCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298D20325FD515E0075F497 /* CreditsCarousel.swift */; };
-		32ECC7C726080EE800D1DB44 /* MovieScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECC7C626080EE800D1DB44 /* MovieScreenHeader.swift */; };
 		32ECC7CC260D6EFA00D1DB44 /* MoviePosterScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECC7CB260D6EFA00D1DB44 /* MoviePosterScroll.swift */; };
 		32FD345D2604758000FBA12E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD345C2604758000FBA12E /* MainView.swift */; };
 		63FED798E518D7D25B10F14C /* Pods_movies_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA2E2829A47951E99FA488F /* Pods_movies_swiftuiTests.framework */; };
@@ -76,6 +76,7 @@
 		3225FA0527253BC000E9F1BE /* LoadableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableViewModel.swift; sourceTree = "<group>"; };
 		3225FA0727253D4F00E9F1BE /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
 		3225FA09272BA5D600E9F1BE /* TextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlock.swift; sourceTree = "<group>"; };
+		3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureScreenHeader.swift; sourceTree = "<group>"; };
 		324E11E524393B9A001CAD62 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3290E5F82438437000D16DA6 /* movies-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movies-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3290E5FB2438437000D16DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		3298D1F925F75F600075F497 /* TintOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintOverlay.swift; sourceTree = "<group>"; };
 		3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoRow.swift; sourceTree = "<group>"; };
 		3298D20325FD515E0075F497 /* CreditsCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsCarousel.swift; sourceTree = "<group>"; };
-		32ECC7C626080EE800D1DB44 /* MovieScreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScreenHeader.swift; sourceTree = "<group>"; };
 		32ECC7CB260D6EFA00D1DB44 /* MoviePosterScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterScroll.swift; sourceTree = "<group>"; };
 		32FD345C2604758000FBA12E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5C4AAC864853A128C77C75AD /* Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,7 +169,6 @@
 				3221ABA424398AA700E6B119 /* MovieScreen.swift */,
 				3298D1FE25FC8BEB0075F497 /* MovieInfoRow.swift */,
 				3298D20325FD515E0075F497 /* CreditsCarousel.swift */,
-				32ECC7C626080EE800D1DB44 /* MovieScreenHeader.swift */,
 			);
 			path = MovieScreen;
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 				32ECC7CB260D6EFA00D1DB44 /* MoviePosterScroll.swift */,
 				3225FA0727253D4F00E9F1BE /* LoadableView.swift */,
 				3225FA09272BA5D600E9F1BE /* TextBlock.swift */,
+				3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -580,6 +580,7 @@
 				3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */,
 				3225FA0A272BA5D600E9F1BE /* TextBlock.swift in Sources */,
 				3221ABA124393F8800E6B119 /* Env.swift in Sources */,
+				3225FA0C272F233D00E9F1BE /* PictureScreenHeader.swift in Sources */,
 				3290E637243844FC00D16DA6 /* MovieResult.swift in Sources */,
 				3298D1FF25FC8BEB0075F497 /* MovieInfoRow.swift in Sources */,
 				3290E62D243843B600D16DA6 /* ApiService.swift in Sources */,
@@ -592,7 +593,6 @@
 				3298D1FA25F75F600075F497 /* TintOverlay.swift in Sources */,
 				3290E6002438437000D16DA6 /* HomeScreen.swift in Sources */,
 				3290E634243844CA00D16DA6 /* MovieService.swift in Sources */,
-				32ECC7C726080EE800D1DB44 /* MovieScreenHeader.swift in Sources */,
 				3225FA0027114B3800E9F1BE /* PersonResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

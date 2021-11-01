@@ -28,7 +28,7 @@ class PeopleScreenViewModel: LoadableViewModel<PeopleDetails> {
 
 
 struct PeopleDetails {
-  let result: PersonResult
+   let result: PersonResult
   
   var name: String {
     get {
@@ -45,6 +45,18 @@ struct PeopleDetails {
   var profilePath: String? {
     get {
       result.profilePath
+    }
+  }
+  
+  var knownForDepartment: String? {
+    get {
+      result.knownForDepartment
+    }
+  }
+  
+  var birthday: String? {
+    get {
+      result.birthday
     }
   }
 }
