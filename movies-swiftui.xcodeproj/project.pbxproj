@@ -23,6 +23,7 @@
 		3225FA0A272BA5D600E9F1BE /* TextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA09272BA5D600E9F1BE /* TextBlock.swift */; };
 		3225FA0C272F233D00E9F1BE /* PictureScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */; };
 		3225FA0E272F8B9600E9F1BE /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0D272F8B9600E9F1BE /* InfoRowView.swift */; };
+		3225FA1027350BB500E9F1BE /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0F27350BB500E9F1BE /* LongText.swift */; };
 		324E11E624393B9A001CAD62 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 324E11E524393B9A001CAD62 /* .gitignore */; };
 		3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FB2438437000D16DA6 /* AppDelegate.swift */; };
 		3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FD2438437000D16DA6 /* SceneDelegate.swift */; };
@@ -79,6 +80,7 @@
 		3225FA09272BA5D600E9F1BE /* TextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlock.swift; sourceTree = "<group>"; };
 		3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureScreenHeader.swift; sourceTree = "<group>"; };
 		3225FA0D272F8B9600E9F1BE /* InfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowView.swift; sourceTree = "<group>"; };
+		3225FA0F27350BB500E9F1BE /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		324E11E524393B9A001CAD62 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3290E5F82438437000D16DA6 /* movies-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movies-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3290E5FB2438437000D16DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				3225FA09272BA5D600E9F1BE /* TextBlock.swift */,
 				3225FA0B272F233D00E9F1BE /* PictureScreenHeader.swift */,
 				3225FA0D272F8B9600E9F1BE /* InfoRowView.swift */,
+				3225FA0F27350BB500E9F1BE /* LongText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				3290E63A2438490700D16DA6 /* TMDBImageUtil.swift in Sources */,
 				3225FA0627253BC000E9F1BE /* LoadableViewModel.swift in Sources */,
 				3223B46425CE51EC00264726 /* MovieScreenViewModel.swift in Sources */,
+				3225FA1027350BB500E9F1BE /* LongText.swift in Sources */,
 				3225F9FE2711421F00E9F1BE /* PeopleScreenViewModel.swift in Sources */,
 				3223B46D25DCE14500264726 /* MoviePoster.swift in Sources */,
 				3298D1FA25F75F600075F497 /* TintOverlay.swift in Sources */,

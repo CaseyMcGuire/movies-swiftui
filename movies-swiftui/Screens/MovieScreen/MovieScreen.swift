@@ -49,7 +49,12 @@ struct MovieScreenView : View {
             CreditsCarousel(title: "Director", cast: [director])
           }
           if let similarMovies = self.movie.similarMovies {
-            MoviePosterScroll(movies: similarMovies)
+            VStack(alignment: .leading) {
+              Text("Similar Movies")
+                .font(.title)
+                .fontWeight(.bold)
+              MoviePosterScroll(movies: similarMovies)
+            }
           }
           Spacer()
         }.padding(12)

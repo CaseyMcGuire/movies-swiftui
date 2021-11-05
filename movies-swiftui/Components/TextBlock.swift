@@ -19,10 +19,7 @@ struct TextBlock: View {
         .font(.system(size: 24))
         .fontWeight(.medium)
         .padding(.bottom, 1)
-      
-      Text(textBody)
-        .fontWeight(.light)
-        .font(.system(size: 17))
+      LongText(text: textBody, font: .system(size: 17), weight: .light)
     }
   }
 }

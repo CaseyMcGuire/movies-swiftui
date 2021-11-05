@@ -22,6 +22,7 @@ struct PeopleScreen: View {
             InfoRowView(items: getItems(data))
             if let biography = data.biography {
               TextBlock(title: "Biography", textBody: biography)
+
             }
           }.padding(10)
         }
