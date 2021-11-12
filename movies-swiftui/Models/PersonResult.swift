@@ -16,4 +16,5 @@ struct PersonResult : Decodable {
   var deathDay: String?
   var placeOfBirth: String?
   var birthday: String?
+  var movieCredits: [String: [MovieResult]]?
 }

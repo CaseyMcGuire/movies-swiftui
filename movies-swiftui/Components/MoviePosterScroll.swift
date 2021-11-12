@@ -19,7 +19,7 @@ struct MoviePosterScroll : View {
         HStack {
           ForEach(movies, id: \.id) { item in
             NavigationLink(destination: MovieScreen(movieId: item.id)) {
-              VStack {
+              VStack(alignment: .leading){
                 MoviePoster(backdropPath: item.path, title: item.title)
               }
             }
@@ -38,8 +38,8 @@ struct MoviePosterData {
 }
 
 
-/*struct MoviePosterScroll_Previews: PreviewProvider {
+struct MoviePosterScroll_Previews: PreviewProvider {
     static var previews: some View {
-        MoviePosterScroll()
+      MoviePosterScroll(movies: [MoviePosterData(id: 1, path: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")])
     }
-}*/
+}

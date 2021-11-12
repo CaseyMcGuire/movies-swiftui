@@ -18,11 +18,7 @@ class MovieService {
   
   func fetchMovie(id: Int, appendToResponse: [MovieAppendToResponse] = []) -> Promise<MovieResult> {
     let url = MovieService.endpoint + String(id)
-    let appendToResponse = appendToResponse.isEmpty ? "" : appendToResponse.reduce("") { acc, next in
-      acc + "," + next.rawValue
-    }
-
-    let queries = !appendToResponse.isEmpty ? ["append_to_response": String(appendToResponse.dropFirst())] : [:]
+    let queries = convertToQueryStringMap(appendToResponse: appendToResponse.map { $0.rawValue })
     return apiService.fetch(endpoint: url, queryStrings: queries, type: MovieResult.self)
   }
   
@@ -48,7 +44,15 @@ class MovieService {
   
   func fetchPerson(id: Int) -> Promise<PersonResult> {
     let url = MovieService.personEndpont + String(id)
-    return apiService.fetch(endpoint: url, type: PersonResult.self)
+    let appendToResponse = convertToQueryStringMap(appendToResponse: ["movie_credits"])
+    return apiService.fetch(endpoint: url, queryStrings: appendToResponse, type: PersonResult.self)
+  }
+  
+  private func convertToQueryStringMap(appendToResponse: [String]) -> [String: String] {
+    let appendToResponse = appendToResponse.isEmpty ? "" : appendToResponse.reduce("") { acc, next in
+      acc + "," + next
+    }
+    return !appendToResponse.isEmpty ? ["append_to_response" : String(appendToResponse.dropFirst())] : [:]
   }
 }
 

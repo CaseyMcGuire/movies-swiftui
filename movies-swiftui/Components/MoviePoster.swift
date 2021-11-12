@@ -14,7 +14,7 @@ struct MoviePoster: View {
   var title: String? = nil
   var size: MoviePosterSize = .medium
   var circle = false
-
+  
   private let smallWidth: CGFloat = 50
   private let mediumWidth: CGFloat = 100
   private let largeWidth: CGFloat = 150
@@ -35,20 +35,32 @@ struct MoviePoster: View {
     let width = self.getWidth()
     let height = width * (3/2)
     VStack {
-    if let backdropPath = self.backdropPath {
-      if let image = TMDBImageUtil.createImage(imagePath: backdropPath, imageSize: .W300) {
-        if self.circle {
-          Image(uiImage: image)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: width, height: width)
-            .clipShape(Circle())
-        }
-        else {
-          Image(uiImage: image)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: width, height: height)
+      if let backdropPath = self.backdropPath {
+        if let image = TMDBImageUtil.createImage(imagePath: backdropPath, imageSize: .W300) {
+          if self.circle {
+            Image(uiImage: image)
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+              .frame(width: width, height: width)
+              .clipShape(Circle())
+          }
+          else {
+            Image(uiImage: image)
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+              .frame(width: width, height: height)
+          }
+        } else {
+          if self.circle {
+            Circle()
+              .fill(Color.gray)
+              .frame(width: width, height: width)
+          }
+          else {
+            Rectangle()
+              .fill(Color.gray)
+              .frame(width: width, height: height)
+          }
         }
       } else {
         if self.circle {
@@ -62,24 +74,19 @@ struct MoviePoster: View {
             .frame(width: width, height: height)
         }
       }
-    } else {
-      if self.circle {
-        Circle()
-          .fill(Color.gray)
-          .frame(width: width, height: width)
-      }
-      else {
-        Rectangle()
-          .fill(Color.gray)
-          .frame(width: width, height: height)
-      }
-    }
+      
+      
       if let title = self.title {
-        Text(title)
-          .font(.system(size: 12))
-          .foregroundColor(.gray)
-          .multilineTextAlignment(.center)
-          .lineLimit(3)
+
+        VStack(alignment: .center) {
+          Text(title)
+            .font(.system(size: 12))
+            .foregroundColor(.gray)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .fixedSize(horizontal: false, vertical: true)
+        }
+        Spacer()
       }
     }.frame(width: width)
   }

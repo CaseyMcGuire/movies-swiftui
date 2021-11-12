@@ -19,10 +19,17 @@ struct PeopleScreen: View {
         VStack {
           PictureScreenHeader(backdropPath: data.profilePath, imagePath: nil, title: data.name, subtitle: nil, includeImage: false)
           VStack {
-            InfoRowView(items: getItems(data))
+            let items = getItems(data)
+            if !items.isEmpty {
+              InfoRowView(items: getItems(data))
+                .padding(.bottom, 12)
+            }
             if let biography = data.biography {
               TextBlock(title: "Biography", textBody: biography)
 
+            }
+            if let movieCredits = data.movieCredits {
+              MoviePosterScroll(movies: movieCredits.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) })
             }
           }.padding(10)
         }
@@ -34,6 +41,9 @@ struct PeopleScreen: View {
     var arr: [InfoRowItem] = []
     if let birthday = details.birthday {
       arr.append(InfoRowItem(title: "Birthday", text: birthday))
+    }
+    if let deathDay = details.deathDate{
+      arr.append(InfoRowItem(title: "Death Date", text: deathDay))
     }
     if let knownFor = details.knownForDepartment {
       arr.append(InfoRowItem(title: "Known For", text: knownFor))

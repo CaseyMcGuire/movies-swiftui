@@ -17,6 +17,7 @@ class PeopleScreenViewModel: LoadableViewModel<PeopleDetails> {
       self.state = .loaded(self.parse(result))
     }
     .catch { err in
+      print(err)
       self.state = .error
     }
   }
@@ -57,6 +58,18 @@ struct PeopleDetails {
   var birthday: String? {
     get {
       result.birthday
+    }
+  }
+  
+  var deathDate: String? {
+    get {
+      result.deathDay
+    }
+  }
+  
+  var movieCredits: [MovieResult] {
+    get {
+      result.movieCredits?["cast"] ?? []
     }
   }
 }
