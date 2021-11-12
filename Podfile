@@ -6,6 +6,7 @@ target 'movies-swiftui' do
   use_frameworks!
   
   pod 'PromisesSwift'
+  pod 'Alamofire', '~> 5.4'
 
   # Pods for movies-swiftui
 
