@@ -20,29 +20,35 @@ struct HomeScreen: View {
     case .error:
       Text("error")
     case .loaded(let details):
-      NavigationView {
-        ScrollView {
-          VStack(alignment: .leading) {
-            Text("Popular")
-              .font(.title)
-              .fontWeight(.bold)
-            MoviePosterScroll(movies: details.nowPlayingMovies)
-            Text("Popular")
-              .font(.title)
-              .fontWeight(.bold)
-            MoviePosterScroll(movies: details.trendingMovies)
-            Spacer()
-          }
-
-        }
-        .navigationTitle("Movies")
-      }
-      .navigationViewStyle(StackNavigationViewStyle())
+      HomeScreenView(details: details)
     }
   }
   
   func load() {
     viewModel.load()
+  }
+}
+
+struct HomeScreenView: View {
+  var details: HomeScreenDetails
+  
+  var body: some View {
+    NavigationView {
+      ScrollView {
+        VStack(alignment: .leading, spacing: 0) {
+          if let mostPopularMovie = details.mostPopularMovie {
+            PictureScreenHeader(backdropPath: mostPopularMovie.backdropPath, imagePath: nil, title: mostPopularMovie.title, subtitle: nil, includeImage: false)
+          }
+          MoviePosterScrollSection(title: "Popular", movies: details.popularMovies)
+          MoviePosterScrollSection(title: "Trending", movies: details.trendingMovies)
+          MoviePosterScrollSection(title: "Upcoming", movies: details.upcomingMovies)
+         Spacer()
+        }
+
+      }
+      .navigationTitle("Movies")
+    }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

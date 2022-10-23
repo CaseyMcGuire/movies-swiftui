@@ -14,7 +14,7 @@ class ApiService {
   
   private static let baseUrl = "https://api.themoviedb.org/3/"
   
-  private func fetch2<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type, completion: @escaping (T?, Error?) -> ()) {
+  private func fetch<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type, completion: @escaping (T?, Error?) -> ()) {
     let dict = ["api_key": Secrets.apiKey].merging(queryStrings) { (current, _) in current }
     let jsonDecoder = JSONDecoder()
     jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -26,7 +26,7 @@ class ApiService {
   
   func fetch<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type) -> Promise<T> {
     return Promise { (resolve, reject) in
-      self.fetch2(endpoint: endpoint, queryStrings: queryStrings, type: type) { (data, err) in
+      self.fetch(endpoint: endpoint, queryStrings: queryStrings, type: type) { (data, err) in
         if err != nil {
           reject(err!)
         }

@@ -62,6 +62,6 @@ enum PictureScreenPlaceholder {
 
 struct PictureScreenHeader_Previews: PreviewProvider {
     static var previews: some View {
-      PictureScreenHeader(backdropPath: "/sGMA6pA2D6X0gun49igJT3piHs3.jpg", imagePath: nil, title: "Tom Hardy", subtitle: nil, includeImage: false)
+      PictureScreenHeader(backdropPath: "/cgoy7t5Ve075naBPcewZrc08qGw.jpg", imagePath: nil, title: "Dwayne Johnson", subtitle: nil, includeImage: false)
     }
 }

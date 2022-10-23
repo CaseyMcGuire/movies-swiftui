@@ -21,12 +21,11 @@ struct PeopleScreen: View {
           VStack {
             let items = getItems(data)
             if !items.isEmpty {
-              InfoRowView(items: getItems(data))
+              InfoRowView(items: items)
                 .padding(.bottom, 12)
             }
             if let biography = data.biography {
               TextBlock(title: "Biography", textBody: biography)
-
             }
             if let movieCredits = data.movieCredits {
               MoviePosterScroll(movies: movieCredits.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) })
@@ -56,8 +55,8 @@ struct PeopleScreen: View {
   }
 }
 
-/*struct PeopleScreen_Previews: PreviewProvider {
+struct PeopleScreen_Previews: PreviewProvider {
     static var previews: some View {
-        PeopleScreen()
+        PeopleScreen(personId: 13836)
     }
-}*/
+}
