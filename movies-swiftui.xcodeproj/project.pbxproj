@@ -25,8 +25,7 @@
 		3225FA0E272F8B9600E9F1BE /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0D272F8B9600E9F1BE /* InfoRowView.swift */; };
 		3225FA1027350BB500E9F1BE /* LongText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225FA0F27350BB500E9F1BE /* LongText.swift */; };
 		324E11E624393B9A001CAD62 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 324E11E524393B9A001CAD62 /* .gitignore */; };
-		3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FB2438437000D16DA6 /* AppDelegate.swift */; };
-		3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FD2438437000D16DA6 /* SceneDelegate.swift */; };
+
 		3290E6002438437000D16DA6 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290E5FF2438437000D16DA6 /* HomeScreen.swift */; };
 		3290E6022438437200D16DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6012438437200D16DA6 /* Assets.xcassets */; };
 		3290E6052438437200D16DA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3290E6042438437200D16DA6 /* Preview Assets.xcassets */; };
@@ -43,6 +42,7 @@
 		32A33EB12904F9F3001AA4A0 /* MoviePosterScrollSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A33EB02904F9F3001AA4A0 /* MoviePosterScrollSection.swift */; };
 		32ECC7CC260D6EFA00D1DB44 /* MoviePosterScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECC7CB260D6EFA00D1DB44 /* MoviePosterScroll.swift */; };
 		32FD345D2604758000FBA12E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD345C2604758000FBA12E /* MainView.swift */; };
+		32AA00012604758000FBA12E /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA00002604758000FBA12E /* MoviesApp.swift */; };
 		63FED798E518D7D25B10F14C /* Pods_movies_swiftuiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA2E2829A47951E99FA488F /* Pods_movies_swiftuiTests.framework */; };
 		9D48989381BB418C05EA803D /* Pods_movies_swiftui_movies_swiftuiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509E8FA8092732B234EADB7 /* Pods_movies_swiftui_movies_swiftuiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -84,8 +84,7 @@
 		3225FA0F27350BB500E9F1BE /* LongText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongText.swift; sourceTree = "<group>"; };
 		324E11E524393B9A001CAD62 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3290E5F82438437000D16DA6 /* movies-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movies-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3290E5FB2438437000D16DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3290E5FD2438437000D16DA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+
 		3290E5FF2438437000D16DA6 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		3290E6012438437200D16DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3290E6042438437200D16DA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		32A33EB02904F9F3001AA4A0 /* MoviePosterScrollSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterScrollSection.swift; sourceTree = "<group>"; };
 		32ECC7CB260D6EFA00D1DB44 /* MoviePosterScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterScroll.swift; sourceTree = "<group>"; };
 		32FD345C2604758000FBA12E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		32AA00002604758000FBA12E /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		5C4AAC864853A128C77C75AD /* Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui-movies-swiftuiUITests/Pods-movies-swiftui-movies-swiftuiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		64B659F5E2EBECE303450271 /* Pods-movies-swiftui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies-swiftui.release.xcconfig"; path = "Target Support Files/Pods-movies-swiftui/Pods-movies-swiftui.release.xcconfig"; sourceTree = "<group>"; };
 		7E11E86D5F55FEB6CCDEAF16 /* Pods_movies_swiftui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies_swiftui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,8 +245,8 @@
 				3290E635243844EA00D16DA6 /* Models */,
 				3290E62E243843E500D16DA6 /* Config */,
 				3290E62B2438439D00D16DA6 /* Services */,
-				3290E5FB2438437000D16DA6 /* AppDelegate.swift */,
-				3290E5FD2438437000D16DA6 /* SceneDelegate.swift */,
+
+				32AA00002604758000FBA12E /* MoviesApp.swift */,
 				32FD345C2604758000FBA12E /* MainView.swift */,
 				3290E6012438437200D16DA6 /* Assets.xcassets */,
 				3290E6092438437200D16DA6 /* Info.plist */,
@@ -580,13 +580,12 @@
 				320F38F125F34ADA00150251 /* CreditResult.swift in Sources */,
 				3298D20425FD515E0075F497 /* CreditsCarousel.swift in Sources */,
 				3221ABAA243A6A9900E6B119 /* HomeScreenViewModel.swift in Sources */,
-				3290E5FC2438437000D16DA6 /* AppDelegate.swift in Sources */,
+				32AA00012604758000FBA12E /* MoviesApp.swift in Sources */,
 				32FD345D2604758000FBA12E /* MainView.swift in Sources */,
 				3221B8A22709954E00B1D946 /* PeopleScreen.swift in Sources */,
 				3290E630243843FC00D16DA6 /* Secrets.swift in Sources */,
 				3225FA0827253D4F00E9F1BE /* LoadableView.swift in Sources */,
 				3221ABA7243998FC00E6B119 /* Genre.swift in Sources */,
-				3290E5FE2438437000D16DA6 /* SceneDelegate.swift in Sources */,
 				3225FA0A272BA5D600E9F1BE /* TextBlock.swift in Sources */,
 				3221ABA124393F8800E6B119 /* Env.swift in Sources */,
 				3225FA0C272F233D00E9F1BE /* PictureScreenHeader.swift in Sources */,
@@ -692,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -747,7 +746,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -767,6 +766,7 @@
 				DEVELOPMENT_TEAM = Y72QXT5PAU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "movies-swiftui/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -788,6 +788,7 @@
 				DEVELOPMENT_TEAM = Y72QXT5PAU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "movies-swiftui/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -807,7 +808,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "movies-swiftuiTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -829,7 +830,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "movies-swiftuiTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -850,6 +851,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "movies-swiftuiUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -870,6 +872,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "movies-swiftuiUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -16,7 +16,6 @@ struct PeopleScreen: View {
   var body: some View {
     LoadableView(viewModel: viewModel) { data in
       ScrollView {
-        VStack {
           PictureScreenHeader(backdropPath: data.profilePath, imagePath: nil, title: data.name, subtitle: nil, includeImage: false)
           VStack {
             let items = getItems(data)
@@ -27,11 +26,10 @@ struct PeopleScreen: View {
             if let biography = data.biography {
               TextBlock(title: "Biography", textBody: biography)
             }
-            if let movieCredits = data.movieCredits {
-              MoviePosterScroll(movies: movieCredits.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) })
+            if !data.movieCredits.isEmpty {
+              MoviePosterScroll(movies: data.movieCredits.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title) })
             }
           }.padding(10)
-        }
       }
     }.onAppear(perform: load)
   }

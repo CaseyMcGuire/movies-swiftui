@@ -27,7 +27,7 @@ struct LongText: View {
 
   
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       // Render the real text (which might or might not be limited)
       Text(text)
         .lineLimit(expanded ? nil : lineLimit)
