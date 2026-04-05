@@ -11,7 +11,7 @@ import Promises
 
 struct HomeScreen: View {
 
-  @ObservedObject var viewModel = HomeScreenViewModel()
+  @StateObject var viewModel = HomeScreenViewModel()
 
   var body: some View {
     LoadableView(viewModel: viewModel) { details in

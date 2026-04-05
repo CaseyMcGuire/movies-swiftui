@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PeopleScreen: View {
   
-  @ObservedObject var viewModel = PeopleScreenViewModel()
+  @StateObject var viewModel = PeopleScreenViewModel()
   var personId: Int
   
   var body: some View {

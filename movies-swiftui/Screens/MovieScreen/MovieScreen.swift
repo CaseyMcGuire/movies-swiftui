@@ -11,7 +11,7 @@ import SwiftUI
 
 struct MovieScreen : View {
   
-  @ObservedObject var movieViewModel = MovieScreenViewModel()
+  @StateObject var movieViewModel = MovieScreenViewModel()
   var movieId: Int
   
   var body: some View {
