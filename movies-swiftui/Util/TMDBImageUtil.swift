@@ -7,28 +7,13 @@
 //
 
 import Foundation
-import UIKit
 
 class TMDBImageUtil {
-  
+
   private static let baseURL = "https://image.tmdb.org/t/p/"
-  
-  public static func createImage(imagePath: String, imageSize: ImageSize) -> UIImage? {
-    guard let url = URL(string: TMDBImageUtil.baseURL + imageSize.rawValue + imagePath) else {
-      return nil
-    }
-    
-    guard let imageData = try? Data(contentsOf: url) else {
-      return nil
-    }
-    return UIImage(data: imageData)
-  }
-  
-  public static func createImageMaybe(imagePath: String?, imageSize: ImageSize) -> UIImage? {
-    guard let imagePath = imagePath else {
-      return nil
-    }
-    return self.createImage(imagePath: imagePath, imageSize: imageSize)
+
+  public static func imageURL(imagePath: String, imageSize: ImageSize) -> URL? {
+    URL(string: TMDBImageUtil.baseURL + imageSize.rawValue + imagePath)
   }
 }
 

@@ -16,17 +16,23 @@ struct PictureScreenHeader: View {
   var includeImage: Bool = true
   
   var body: some View {
+    let backdropURL: URL? = backdropPath.flatMap { TMDBImageUtil.imageURL(imagePath: $0, imageSize: .W780) }
     VStack {
-      let backdropImage =  TMDBImageUtil.createImageMaybe(imagePath: backdropPath, imageSize: .W780)
-      if let backdropImage = backdropImage {
-        Image(uiImage: backdropImage)
-          .resizable()
-          .scaledToFit()
-          .overlay(TintOverlay())
-          .clipped()
+      if let backdropURL = backdropURL {
+        AsyncImage(url: backdropURL) { image in
+          image
+            .resizable()
+            .scaledToFit()
+            .overlay(TintOverlay())
+            .clipped()
+        } placeholder: {
+          Rectangle()
+            .fill(Color.gray)
+            .aspectRatio(16/9, contentMode: .fit)
+        }
       }
-      
-      let offset: CGFloat = backdropImage != nil ? -140 : 0
+
+      let offset: CGFloat = backdropURL != nil ? -140 : 0
       VStack(alignment: .leading) {
         VStack {
           HStack {

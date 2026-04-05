@@ -35,28 +35,27 @@ struct MoviePoster: View {
     let width = self.getWidth()
     let height = width * (3/2)
     VStack {
-      if let backdropPath = self.backdropPath {
-        if let image = TMDBImageUtil.createImage(imagePath: backdropPath, imageSize: .W300) {
+      if let backdropPath = self.backdropPath,
+         let url = TMDBImageUtil.imageURL(imagePath: backdropPath, imageSize: .W300) {
+        AsyncImage(url: url) { image in
           if self.circle {
-            Image(uiImage: image)
+            image
               .resizable()
               .aspectRatio(contentMode: .fill)
               .frame(width: width, height: width)
               .clipShape(Circle())
-          }
-          else {
-            Image(uiImage: image)
+          } else {
+            image
               .resizable()
               .aspectRatio(contentMode: .fill)
               .frame(width: width, height: height)
           }
-        } else {
+        } placeholder: {
           if self.circle {
             Circle()
               .fill(Color.gray)
               .frame(width: width, height: width)
-          }
-          else {
+          } else {
             Rectangle()
               .fill(Color.gray)
               .frame(width: width, height: height)
@@ -67,8 +66,7 @@ struct MoviePoster: View {
           Circle()
             .fill(Color.gray)
             .frame(width: width, height: width)
-        }
-        else {
+        } else {
           Rectangle()
             .fill(Color.gray)
             .frame(width: width, height: height)

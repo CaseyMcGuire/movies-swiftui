@@ -10,22 +10,13 @@ import SwiftUI
 import Promises
 
 struct HomeScreen: View {
-  
+
   @ObservedObject var viewModel = HomeScreenViewModel()
-  
+
   var body: some View {
-    switch self.viewModel.loadingState {
-    case .loading:
-      ProgressView().onAppear(perform: load)
-    case .error:
-      Text("error")
-    case .loaded(let details):
+    LoadableView(viewModel: viewModel) { details in
       HomeScreenView(details: details)
     }
-  }
-  
-  func load() {
-    viewModel.load()
   }
 }
 

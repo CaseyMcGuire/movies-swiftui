@@ -9,12 +9,10 @@
 import Foundation
 import Promises
 
-class HomeScreenViewModel : ObservableObject {
+class HomeScreenViewModel : LoadableViewModel<HomeScreenDetails> {
   private let movieService = MovieService()
-  
-  @Published var loadingState: LoadingState<HomeScreenDetails> = .loading
-  
-  func load() {
+
+  override func load() {
     all(
       movieService.fetchPopular(),
       movieService.fetchTrending(),
@@ -26,10 +24,11 @@ class HomeScreenViewModel : ObservableObject {
         return movieResults.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title)}
       }
       let mostPopularMovie = popular.results.compactMap { $0 }.first
-      self.loadingState = .loaded(HomeScreenDetails(mostPopularMovie: mostPopularMovie,                                                                                         popularMovies: movies[0],
-                                                    trendingMovies: movies[1],
-                                                    upcomingMovies: movies[2],
-                                                    nowPlayingMovies: movies[3]))
+      self.state = .loaded(HomeScreenDetails(mostPopularMovie: mostPopularMovie,
+                                             popularMovies: movies[0],
+                                             trendingMovies: movies[1],
+                                             upcomingMovies: movies[2],
+                                             nowPlayingMovies: movies[3]))
     }
   }
 }
