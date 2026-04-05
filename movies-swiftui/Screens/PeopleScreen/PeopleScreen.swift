@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PeopleScreen: View {
   
-  @StateObject var viewModel = PeopleScreenViewModel()
+  @State var viewModel = PeopleScreenViewModel()
   var personId: Int
   
   var body: some View {
@@ -31,7 +31,10 @@ struct PeopleScreen: View {
             }
           }.padding(10)
       }
-    }.onAppear(perform: load)
+    }
+    .task(id: personId) {
+      viewModel.load(peopleId: personId)
+    }
   }
   
   func getItems(_ details: PeopleDetails) -> [InfoRowItem] {
@@ -47,14 +50,8 @@ struct PeopleScreen: View {
     }
     return arr
   }
-  
-  func load() {
-    viewModel.load(peopleId: personId)
-  }
 }
 
-struct PeopleScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        PeopleScreen(personId: 13836)
-    }
+#Preview {
+  PeopleScreen(personId: 13836)
 }

@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct LoadableView<T, Content: View>: View {
-  
-  @ObservedObject var viewModel: LoadableViewModel<T>
+
+  var viewModel: LoadableViewModel<T>
   var content: (T) -> Content
   
   var body: some View {
     switch self.viewModel.state {
     case .loading:
-      ProgressView().onAppear(perform: self.viewModel.load)
+      ProgressView()
     case .loaded(let data):
       content(data)
     case .error:

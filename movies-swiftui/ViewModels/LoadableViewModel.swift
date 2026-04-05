@@ -7,11 +7,37 @@
 //
 
 import Foundation
+import Observation
 
-class LoadableViewModel<T>: ObservableObject {
-  @Published var state: LoadingState<T> = .loading
-  
-  func load() {}
+// A base view model for screens that load async data. Subclass with your data type,
+// then set `state` to `.loaded(data)` or `.error` when your async work completes.
+// Pair with `LoadableView` to automatically show a loading spinner, error state,
+// or your content.
+//
+// Example:
+//
+//   class MyViewModel: LoadableViewModel<MyData> {
+//     func load() {
+//       fetchData().then { result in
+//         self.state = .loaded(result)
+//       }.catch { _ in
+//         self.state = .error
+//       }
+//     }
+//   }
+//
+//   struct MyScreen: View {
+//     @State var viewModel = MyViewModel()
+//     var body: some View {
+//       LoadableView(viewModel: viewModel) { data in
+//         Text(data.title)
+//       }
+//       .task { viewModel.load() }
+//     }
+//   }
+@Observable
+class LoadableViewModel<T> {
+  var state: LoadingState<T> = .loading
 }
 
 enum LoadingState<Value> {

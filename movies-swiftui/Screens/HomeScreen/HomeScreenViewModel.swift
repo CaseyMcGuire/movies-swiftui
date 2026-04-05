@@ -12,7 +12,7 @@ import Promises
 class HomeScreenViewModel : LoadableViewModel<HomeScreenDetails> {
   private let movieService = MovieService()
 
-  override func load() {
+  func load() {
     all(
       movieService.fetchPopular(),
       movieService.fetchTrending(),

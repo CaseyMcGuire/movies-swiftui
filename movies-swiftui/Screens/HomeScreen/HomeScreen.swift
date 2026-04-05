@@ -11,11 +11,14 @@ import Promises
 
 struct HomeScreen: View {
 
-  @StateObject var viewModel = HomeScreenViewModel()
+  @State var viewModel = HomeScreenViewModel()
 
   var body: some View {
     LoadableView(viewModel: viewModel) { details in
       HomeScreenView(details: details)
+    }
+    .task {
+      viewModel.load()
     }
   }
 }
@@ -24,7 +27,7 @@ struct HomeScreenView: View {
   var details: HomeScreenDetails
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       ScrollView {
         VStack(alignment: .leading, spacing: 0) {
           if let mostPopularMovie = details.mostPopularMovie {
@@ -39,7 +42,6 @@ struct HomeScreenView: View {
       }
       .navigationTitle("Movies")
     }
-    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 
@@ -47,8 +49,6 @@ struct HomeScreenView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    HomeScreen()
-  }
+#Preview {
+  HomeScreen()
 }
