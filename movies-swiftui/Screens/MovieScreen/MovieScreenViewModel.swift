@@ -8,16 +8,18 @@
 
 import Foundation
 
-class MovieScreenViewModel: LoadableViewModel<MovieDetails> {
+@MainActor
+final class MovieScreenViewModel: LoadableViewModel<MovieDetails> {
 
   private let movieService = MovieService()
   
-  func load(movieId: Int) {
-    movieService.fetchMovie(id: movieId, appendToResponse: [.credits, .similar]).then { result in
-      self.state = .loaded(self.parse(result))
-    }
-    .catch { err in
-      self.state = .error
+  func load(movieId: Int) async {
+    state = .loading
+    do {
+      let result = try await movieService.fetchMovie(id: movieId, appendToResponse: [.credits, .similar])
+      state = .loaded(parse(result))
+    } catch {
+      state = .error
     }
   }
   

@@ -17,22 +17,23 @@ import Observation
 // Example:
 //
 //   class MyViewModel: LoadableViewModel<MyData> {
-//     func load() {
-//       fetchData().then { result in
+//     func load() async {
+//       do {
+//         let result = try await fetchData()
 //         self.state = .loaded(result)
-//       }.catch { _ in
+//       } catch {
 //         self.state = .error
 //       }
 //     }
 //   }
 //
 //   struct MyScreen: View {
-//     @State var viewModel = MyViewModel()
+//     @State private var viewModel = MyViewModel()
 //     var body: some View {
 //       LoadableView(viewModel: viewModel) { data in
 //         Text(data.title)
 //       }
-//       .task { viewModel.load() }
+//       .task { await viewModel.load() }
 //     }
 //   }
 @Observable

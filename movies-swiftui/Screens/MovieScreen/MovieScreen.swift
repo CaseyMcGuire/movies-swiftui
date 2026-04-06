@@ -11,7 +11,7 @@ import SwiftUI
 
 struct MovieScreen : View {
   
-  @State var movieViewModel = MovieScreenViewModel()
+  @State private var movieViewModel = MovieScreenViewModel()
   var movieId: Int
   
   var body: some View {
@@ -19,7 +19,7 @@ struct MovieScreen : View {
       MovieScreenView(movie: data)
     }
     .task(id: movieId) {
-      movieViewModel.load(movieId: movieId)
+      await movieViewModel.load(movieId: movieId)
     }
     .navigationBarTitleDisplayMode(.inline)
   }
@@ -62,6 +62,8 @@ struct MovieScreenView : View {
   }
 }
 
-#Preview {
-  MovieScreen(movieId: 464052)
+struct MovieScreen_Previews: PreviewProvider {
+  static var previews: some View {
+    MovieScreen(movieId: 464052)
+  }
 }

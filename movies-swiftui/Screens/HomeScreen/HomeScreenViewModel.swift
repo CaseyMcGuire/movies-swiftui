@@ -7,28 +7,35 @@
 //
 
 import Foundation
-import Promises
 
-class HomeScreenViewModel : LoadableViewModel<HomeScreenDetails> {
+@MainActor
+final class HomeScreenViewModel: LoadableViewModel<HomeScreenDetails> {
   private let movieService = MovieService()
 
-  func load() {
-    all(
-      movieService.fetchPopular(),
-      movieService.fetchTrending(),
-      movieService.fetchUpcoming(),
-      movieService.fetchNowPlaying()
-    ).then { popular, trending, upcoming, nowPlaying in
-      let movies: Array<Array<MoviePosterData>> = [popular, trending, upcoming, nowPlaying].map { movieList in
+  func load() async {
+    state = .loading
+    do {
+      async let popular = movieService.fetchPopular()
+      async let trending = movieService.fetchTrending()
+      async let upcoming = movieService.fetchUpcoming()
+      async let nowPlaying = movieService.fetchNowPlaying()
+      
+      let popularResults = try await popular
+      let trendingResults = try await trending
+      let upcomingResults = try await upcoming
+      let nowPlayingResults = try await nowPlaying
+      let movies: [Array<MoviePosterData>] = [popularResults, trendingResults, upcomingResults, nowPlayingResults].map { movieList in
         let movieResults = movieList.results.compactMap { $0 }
         return movieResults.map { MoviePosterData(id: $0.id, path: $0.posterPath, title: $0.title)}
       }
-      let mostPopularMovie = popular.results.compactMap { $0 }.first
-      self.state = .loaded(HomeScreenDetails(mostPopularMovie: mostPopularMovie,
-                                             popularMovies: movies[0],
-                                             trendingMovies: movies[1],
-                                             upcomingMovies: movies[2],
-                                             nowPlayingMovies: movies[3]))
+      let mostPopularMovie = popularResults.results.compactMap { $0 }.first
+      state = .loaded(HomeScreenDetails(mostPopularMovie: mostPopularMovie,
+                                        popularMovies: movies[0],
+                                        trendingMovies: movies[1],
+                                        upcomingMovies: movies[2],
+                                        nowPlayingMovies: movies[3]))
+    } catch {
+      state = .error
     }
   }
 }

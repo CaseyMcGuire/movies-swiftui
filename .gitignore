@@ -1,2 +1,5 @@
 movies-swiftui/Env.swift
-Pods/
+.DS_Store
+*.xcuserstate
+xcuserdata/
+movies-swiftui.xcworkspace/

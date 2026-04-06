@@ -7,44 +7,46 @@
 //
 
 import Foundation
-import Promises
-import Alamofire
 
-class ApiService {
+final class ApiService {
   
   private static let baseUrl = "https://api.themoviedb.org/3/"
+  private let session: URLSession
   
-  private func fetch<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type, completion: @escaping (T?, Error?) -> ()) {
+  init(session: URLSession = .shared) {
+    self.session = session
+  }
+  
+  func fetch<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type) async throws -> T {
     let dict = ["api_key": Secrets.apiKey].merging(queryStrings) { (current, _) in current }
+    guard var components = URLComponents(string: ApiService.baseUrl + endpoint) else {
+      throw ApiServiceError.invalidURL
+    }
+    components.queryItems = dict.map { URLQueryItem(name: $0.key, value: $0.value) }
+    guard let url = components.url else {
+      throw ApiServiceError.invalidURL
+    }
+    
+    let (data, response) = try await session.data(from: url)
+    guard let httpResponse = response as? HTTPURLResponse else {
+      throw ApiServiceError.invalidResponse
+    }
+    guard 200..<300 ~= httpResponse.statusCode else {
+      throw ApiServiceError.unsuccessfulStatusCode(httpResponse.statusCode)
+    }
+    
     let jsonDecoder = JSONDecoder()
     jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-    AF.request(ApiService.baseUrl + endpoint, parameters: dict)
-      .responseDecodable(of: T.self, decoder: jsonDecoder) { response in
-       completion(response.value, response.error)
-    }
+    return try jsonDecoder.decode(T.self, from: data)
   }
   
-  func fetch<T: Decodable>(endpoint: String, queryStrings: [String: String], type: T.Type) -> Promise<T> {
-    return Promise { (resolve, reject) in
-      self.fetch(endpoint: endpoint, queryStrings: queryStrings, type: type) { (data, err) in
-        if err != nil {
-          reject(err!)
-        }
-        else {
-          resolve(data!)
-        }
-      }
-    }
-  }
-  
-  func fetch<T: Decodable>(endpoint: String, type: T.Type) -> Promise<T> {
-    return fetch(endpoint: endpoint, queryStrings: [:], type: type)
+  func fetch<T: Decodable>(endpoint: String, type: T.Type) async throws -> T {
+    try await fetch(endpoint: endpoint, queryStrings: [:], type: type)
   }
 }
 
-private extension URLComponents {
-  mutating func addQueryItems(_ items: [String: String]) {
-    let newQueryItems = items.map { URLQueryItem(name: $0, value: $1) }
-    self.queryItems = (self.queryItems ?? []) + newQueryItems
-  }
+enum ApiServiceError: Error {
+  case invalidURL
+  case invalidResponse
+  case unsuccessfulStatusCode(Int)
 }

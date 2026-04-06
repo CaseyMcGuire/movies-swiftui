@@ -7,18 +7,17 @@
 //
 
 import SwiftUI
-import Promises
 
 struct HomeScreen: View {
 
-  @State var viewModel = HomeScreenViewModel()
+  @State private var viewModel = HomeScreenViewModel()
 
   var body: some View {
     LoadableView(viewModel: viewModel) { details in
       HomeScreenView(details: details)
     }
     .task {
-      viewModel.load()
+      await viewModel.load()
     }
   }
 }
@@ -33,9 +32,11 @@ struct HomeScreenView: View {
           if let mostPopularMovie = details.mostPopularMovie {
             PictureScreenHeader(backdropPath: mostPopularMovie.backdropPath, imagePath: nil, title: mostPopularMovie.title, subtitle: nil, includeImage: false)
           }
+          MoviePosterScrollSection(title: "Upcoming", movies:
+              details.upcomingMovies)
           MoviePosterScrollSection(title: "Popular", movies: details.popularMovies)
           MoviePosterScrollSection(title: "Trending", movies: details.trendingMovies)
-          MoviePosterScrollSection(title: "Upcoming", movies: details.upcomingMovies)
+          MoviePosterScrollSection(title: "Now Playing", movies: details.nowPlayingMovies)
          Spacer()
         }
 
@@ -49,6 +50,8 @@ struct HomeScreenView: View {
 
 
 
-#Preview {
-  HomeScreen()
+struct HomeScreen_Previews: PreviewProvider {
+  static var previews: some View {
+    HomeScreen()
+  }
 }

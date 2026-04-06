@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PeopleScreen: View {
   
-  @State var viewModel = PeopleScreenViewModel()
+  @State private var viewModel = PeopleScreenViewModel()
   var personId: Int
   
   var body: some View {
@@ -33,7 +33,7 @@ struct PeopleScreen: View {
       }
     }
     .task(id: personId) {
-      viewModel.load(peopleId: personId)
+      await viewModel.load(peopleId: personId)
     }
   }
   
@@ -52,6 +52,8 @@ struct PeopleScreen: View {
   }
 }
 
-#Preview {
-  PeopleScreen(personId: 13836)
+struct PeopleScreen_Previews: PreviewProvider {
+  static var previews: some View {
+    PeopleScreen(personId: 13836)
+  }
 }
