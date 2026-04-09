@@ -12,7 +12,14 @@ import SwiftUI
 struct MoviesApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeScreen()
+          TabView {
+            Tab("Home", systemImage: "house") {
+              HomeScreen()
+            }
+            Tab("Search", systemImage: "magnifyingglass") {
+              SearchScreen()
+            }
+          }
         }
     }
 }
