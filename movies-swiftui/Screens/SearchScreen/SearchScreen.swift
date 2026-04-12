@@ -16,27 +16,26 @@ struct SearchScreen : View {
   var body: some View {
     NavigationStack {
       Group {
-        if !searchText.isEmpty {
-          LoadableView(viewModel: viewModel) { data in
-            List(data.results, id: \.id) { result in
-              NavigationLink {
-                MovieScreen(movieId: result.id)
-              } label: {
-                Text(result.title)
-              }
+        switch viewModel.loadingState {
+        case .none:
+          ContentUnavailableView("Search", systemImage: "magnifyingglass")
+        case .loading(_, _):
+          ProgressView()
+        case .loaded(_, let result):
+          List(result, id: \.id) { result in
+            NavigationLink {
+              MovieScreen(movieId: result.id)
+            } label: {
+              Text(result.title)
             }
-          }.task(id: searchText) {
-            try? await Task.sleep(for: .milliseconds(300))
-            guard !Task.isCancelled else { return }
-            await viewModel.load(searchText: searchText)
           }
-        }
-        else {
-          ContentUnavailableView {
-            Text("Please search")
-          }
+        case .error:
+          Text("Error")
         }
       }.searchable(text: $searchText)
+       .onChange(of: searchText) { _, newValue in
+         viewModel.query(newValue)
+       }
     }
   }
 }

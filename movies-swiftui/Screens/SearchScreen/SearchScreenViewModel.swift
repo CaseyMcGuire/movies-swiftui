@@ -9,28 +9,56 @@
 import Foundation
 
 @MainActor
-final class SearchScreenViewModel: LoadableViewModel<MovieResultList> {
+@Observable
+final class SearchScreenViewModel {
   
   private let searchService = SearchService()
+  var loadingState: SearchLoadingState = .none
+  var requestId = UUID()
   
-  // type-safe since we're always on the main thread
-  private var lastQuery: String?
-  
-  func load(searchText: String) async {
-    if searchText == lastQuery, case .loaded = state {
-        return
-    }
-    state = .loading
-    lastQuery = searchText
-    do {
-      let result = try await searchService.searchMovies(query: searchText)
-      state = .loaded(result)
-    } catch is CancellationError {
-      // ignore
-    } catch let urlError as URLError where urlError.code == .cancelled {
-      // ignore
-    } catch {
-      state = .error
+  func query(_ queryText: String) {
+    let modifiedQueryText = queryText.trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    switch loadingState {
+    case .none, .error:
+      loadingState = createLoadingState(modifiedQueryText)
+    case .loading(let searchText, let task):
+      guard searchText != modifiedQueryText else { return }
+      task.cancel()
+      loadingState = createLoadingState(modifiedQueryText)
+    case .loaded(let searchText, _):
+      guard searchText != modifiedQueryText else { return }
+      loadingState = createLoadingState(modifiedQueryText)
     }
   }
+  
+  private func createLoadingState(_ queryText: String) -> SearchLoadingState {
+    requestId = UUID()
+    let pendingRequestId = requestId
+    if queryText.isEmpty {
+      return .none
+    }
+    return .loading(
+      searchText: queryText,
+      task: Task {
+        do {
+          try await Task.sleep(for: .milliseconds(300))
+          let results = try await searchService.searchMovies(query: queryText)
+          guard pendingRequestId == requestId else { return }
+          loadingState = .loaded(searchText: queryText, result: results.results)
+        } catch is CancellationError {}
+          catch let error as URLError where error.code == .cancelled {}
+          catch {
+            guard pendingRequestId == requestId else { return }
+            loadingState = .error
+          }
+      })
+  }
+}
+
+enum SearchLoadingState {
+  case none
+  case loading(searchText: String, task: Task<Void, Never>)
+  case loaded(searchText: String, result: [MovieResult])
+  case error
 }
