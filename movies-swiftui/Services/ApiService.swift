@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ApiService {
+final class ApiService: Sendable {
   
   private static let baseUrl = "https://api.themoviedb.org/3/"
   private let session: URLSession

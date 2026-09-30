@@ -36,6 +36,7 @@ import Observation
 //       .task { await viewModel.load() }
 //     }
 //   }
+@MainActor
 @Observable
 class LoadableViewModel<T> {
   var state: LoadingState<T> = .loading

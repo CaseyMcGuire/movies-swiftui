@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class MovieService {
+final class MovieService: Sendable {
   
   private static let endpoint = "movie/"
   private static let personEndpont = "person/"

@@ -6,7 +6,7 @@
 //  Copyright © 2026 Casey McGuire. All rights reserved.
 //
 
-final class SearchService {
+final class SearchService: Sendable {
   
   private let apiService = ApiService()
   
