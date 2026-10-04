@@ -47,16 +47,14 @@ struct CreditsCarousel : View {
 }
 }
 
-struct CreditsCarousel_Previews: PreviewProvider {
-  static var previews: some View {
-    CreditsCarousel(title: "Actors", cast: [
-                      .init(id: 1,
-                            name: "Gad Gadot",
-                            characterName: "Diana Prince / Wonder Woman",
-                            profilePath: "/cG8f05QzSrLunXgEIJUEj4F3IVz.jpg"),
-                      .init(id: 2,
-                            name: "Chris Pine",
-                            characterName: "Steve Trevor",
-                            profilePath: "/ipG3BMO8Ckv9xVeEY27lzq975Qm.jpg")])
-  }
+#Preview {
+  CreditsCarousel(title: "Actors", cast: [
+                    .init(id: 1,
+                          name: "Gad Gadot",
+                          characterName: "Diana Prince / Wonder Woman",
+                          profilePath: "/cG8f05QzSrLunXgEIJUEj4F3IVz.jpg"),
+                    .init(id: 2,
+                          name: "Chris Pine",
+                          characterName: "Steve Trevor",
+                          profilePath: "/ipG3BMO8Ckv9xVeEY27lzq975Qm.jpg")])
 }

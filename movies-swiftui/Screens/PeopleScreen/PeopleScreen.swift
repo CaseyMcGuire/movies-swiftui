@@ -52,8 +52,6 @@ struct PeopleScreen: View {
   }
 }
 
-struct PeopleScreen_Previews: PreviewProvider {
-  static var previews: some View {
-    PeopleScreen(personId: 13836)
-  }
+#Preview {
+  PeopleScreen(personId: 13836)
 }

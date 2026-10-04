@@ -37,8 +37,6 @@ struct MovieInfoRow: View {
   }
 }
 
-struct MovieInfoRow_Previews: PreviewProvider {
-  static var previews: some View {
-    MovieInfoRow(rating: "8.2", releaseDate: "March 15, 2021", language: "English")
-  }
+#Preview {
+  MovieInfoRow(rating: "8.2", releaseDate: "March 15, 2021", language: "English")
 }

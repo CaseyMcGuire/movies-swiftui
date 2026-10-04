@@ -62,8 +62,6 @@ struct MovieScreenView : View {
   }
 }
 
-struct MovieScreen_Previews: PreviewProvider {
-  static var previews: some View {
-    MovieScreen(movieId: 464052)
-  }
+#Preview {
+  MovieScreen(movieId: 464052)
 }

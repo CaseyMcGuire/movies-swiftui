@@ -96,8 +96,6 @@ enum MoviePosterSize {
   case large
 }
 
-struct MoviePoster_Previews: PreviewProvider {
-  static var previews: some View {
-    MoviePoster(backdropPath: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")
-  }
+#Preview {
+  MoviePoster(backdropPath: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")
 }

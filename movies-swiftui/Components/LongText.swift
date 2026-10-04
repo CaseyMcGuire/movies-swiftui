@@ -77,8 +77,6 @@ struct LongText: View {
   }
 }
 
-struct LongText_Previews: PreviewProvider {
-    static var previews: some View {
-      LongText(text: "lafjal;sdfjasldfkjasl;fjasfl;asjdf")
-    }
+#Preview {
+  LongText(text: "lafjal;sdfjasldfkjasl;fjasfl;asjdf")
 }

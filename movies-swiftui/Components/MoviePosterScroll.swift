@@ -38,8 +38,6 @@ struct MoviePosterData {
 }
 
 
-struct MoviePosterScroll_Previews: PreviewProvider {
-    static var previews: some View {
-      MoviePosterScroll(movies: [MoviePosterData(id: 1, path: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")])
-    }
+#Preview {
+  MoviePosterScroll(movies: [MoviePosterData(id: 1, path: "/6KErczPBROQty7QoIsaa6wJYXZi.jpg", title: "Tom and Jerry asdfasjldfjasdlfajsfals;dfjasdlfjdl")])
 }

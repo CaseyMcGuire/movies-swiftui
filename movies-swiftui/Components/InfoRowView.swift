@@ -48,8 +48,6 @@ private struct InfoRowViewItem: View {
   }
 }
 
-struct InfoRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoRowView(items: [])
-    }
+#Preview {
+  InfoRowView(items: [])
 }

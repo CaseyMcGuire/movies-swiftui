@@ -22,8 +22,6 @@ struct MoviePosterScrollSection: View {
     }
 }
 
-/*struct MoviePosterScrollSection_Previews: PreviewProvider {
-    static var previews: some View {
-        MoviePosterScrollSection()
-    }
+/*#Preview {
+  MoviePosterScrollSection()
 }*/
